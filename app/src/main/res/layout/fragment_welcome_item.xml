@@ -10,22 +10,26 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"></LinearLayout>
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tvDescripcion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="100dp"
-        android:text="blank_fragment" />
-
-    <TextView
-        android:id="@+id/tvTitulo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:text="@string/hello_blank_fragment" />
+        <ImageView
+            android:id="@+id/imgFrame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="top"/>
+        <TextView
+            android:id="@+id/tvTitulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="@string/estudiantes_fragment_titulo"
+            android:layout_gravity="bottom"/>
+        <TextView
+          android:id="@+id/tvDescripcion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="@string/estudiantes_fragment_subtitulo"
+            android:layout_gravity="bottom"/>
+    </LinearLayout>
 
 </FrameLayout>

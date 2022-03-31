@@ -1,5 +1,24 @@
 <resources>
-    <string name="app_name">Caira 2</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+
+    <string name="app_name">Caira 2</string>
+
+    <string name="nulo"> </string>
+    <string name="title_activity_instrucciones">Instrucciones</string>
+    <string name="futuro_fragment">Caira conecta estudiantes con instituciones educativas. En un mundo en constante cambio, la educación debe prepararnos para adaptarnos y encontrar nuestro camino</string>
+    <string name="futuro_fragment_titulo">Hacemos realidad el futuro de la educación</string>
+    <string name="estudiantes_fragment">
+        Pruébate en nuestro laboratorio y conócete a ti mismo como nunca antes habías creído posible.\n
+        Utiliza Caira como una herramienta para conocer más personas con las mismas inquietudes que tú y alcanza tu mejor versión. Accede a formación exclusiva, aprende y conoce a tu mejor yo.</string>
+    <string name="estudiantes_fragment_subtitulo">Conócete más se mejor. Conecta, aprende, crece</string>
+    <string name="estudiantes_fragment_titulo">ESTUDIANTES</string>
+    <string name="universidades_fragment">
+        Diseña un perfil a medida y crea contenido de todo tipo que te permitirá que los estudiantes te conozcan, interactúen contigo y te escojan como la mejor opción.\n
+        Accede a nuestro dashboard y podrás tener un control absoluto de todo lo que ocurre en tu red. Proporcionamos información real proveniente de las métricas de tus usuarios para que puedas mejorar constantemente tu desempeño.</string>
+
+
+
 </resources>
