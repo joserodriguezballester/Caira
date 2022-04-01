@@ -3,7 +3,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
-
     <string name="app_name">Caira 2</string>
 
     <string name="nulo"> </string>
@@ -18,7 +17,27 @@
     <string name="universidades_fragment">
         Diseña un perfil a medida y crea contenido de todo tipo que te permitirá que los estudiantes te conozcan, interactúen contigo y te escojan como la mejor opción.\n
         Accede a nuestro dashboard y podrás tener un control absoluto de todo lo que ocurre en tu red. Proporcionamos información real proveniente de las métricas de tus usuarios para que puedas mejorar constantemente tu desempeño.</string>
+    <string name="title_activity_bodyapp">BodyappActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Welcome to Caira</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
 
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="account_settings">Account settings</string>
+    <string name="social_profile">Social profile</string>
+    <string name="logout">Logout</string>
+    <string name="notifications">Notifications</string>
+    <string name="email_addres">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="join">Register Now!</string>
+    <string name="forgot">Forgot password?</string>
+    <string name="remember_me">Remember Me</string>
 
 
 </resources>

@@ -13,11 +13,14 @@
         android:theme="@style/Theme.Caira2"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".iu.activity.BodyappActivity"
+            android:exported="false"
+            android:label="@string/title_activity_bodyapp"
+            android:theme="@style/Theme.Caira2.NoActionBar" />
+        <activity
             android:name=".iu.activity.WelcomeActivity"
-            android:exported="true" >
-
-
-        </activity>
+            android:exported="true"
+            android:theme="@style/Theme.Caira2.NoActionBar"/>
         <activity
             android:name=".iu.activity.MainActivity"
             android:exported="true">
