@@ -11,4 +11,5 @@
     <color name="primary">#624585</color>
     <color name="secondary">#b857cd</color>
     <color name="enlace">#FF6200EE</color>
+    <color name="BlancoTransparente">#cccccc</color>
 </resources>

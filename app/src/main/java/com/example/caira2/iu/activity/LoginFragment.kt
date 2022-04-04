@@ -1,14 +1,17 @@
 package com.example.caira2.iu.activity
 
-import androidx.lifecycle.ViewModelProvider
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
+import android.util.Log
 import android.view.View
-import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.example.caira2.R
+import com.example.caira2.databinding.LoginFragmentBinding
+import com.example.caira2.others.BaseFragment
+import com.example.caira2.viewModel.LoginViewModel
 
-class LoginFragment : Fragment() {
+class LoginFragment : BaseFragment<LoginFragmentBinding>(R.layout.login_fragment) {
 
     companion object {
         fun newInstance() = LoginFragment()
@@ -16,17 +19,23 @@ class LoginFragment : Fragment() {
 
     private lateinit var viewModel: LoginViewModel
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.login_fragment, container, false)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        _binding = LoginFragmentBinding.bind(view)
+        viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
+        binding.viewmodel = viewModel
+
+        viewModel.gotoRegister.observe(viewLifecycleOwner, Observer { value ->
+            Log.i("msg*****", "gotoRegister: ${value} ")
+            if(value){
+                Log.i("msg*****", "gotoRegister: ${value} ")
+                val intent = Intent(activity, RegisterActivity::class.java)
+                startActivity(intent)
+            }else{
+                //todo NO registrado, cambia de actividad
+            }
+        })
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
 
 }
