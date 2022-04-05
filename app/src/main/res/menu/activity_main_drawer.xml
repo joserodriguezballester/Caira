@@ -4,17 +4,40 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
+<!--        <item-->
+<!--            android:id="@+id/nav_dashboard"-->
+<!--            android:icon="@drawable/ic_menu_camera"-->
+<!--            android:title="@string/menu_home" />-->
         <item
             android:id="@+id/nav_dashboard"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_baseline_dashboard_24"
             android:title="@string/menu_home" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
+            android:id="@+id/opportunitiesFragment"
+            android:icon="@drawable/ic_baseline_travel_explore_20"
+            android:title="@string/opportunities" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+
+            android:icon="@drawable/ic_baseline_people_24"
+            android:title="@string/contacts" />
+        <item
+
+            android:icon="@drawable/ic_baseline_psychology_24"
+            android:title="Tests" />
+        <item
+
+            android:icon="@drawable/ic_baseline_assistant_24"
+            android:title="Feed" />
+        <item
+
+            android:icon="@drawable/ic_baseline_connect_without_contact_24"
+            android:title="P2P" />
+
     </group>
+    <item
+
+        android:icon="@drawable/ic_baseline_help_24"
+        android:title="Help" />
+
+
 </menu>

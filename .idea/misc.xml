@@ -7,6 +7,7 @@
         <entry key="..\:/proyectosAndroid/Caira2/app/src/main/res/drawable-v24/ic_menu_social.xml" value="0.135" />
         <entry key="..\:/proyectosAndroid/Caira2/app/src/main/res/drawable/gradient_caira.xml" value="0.135" />
         <entry key="..\:/proyectosAndroid/Caira2/app/src/main/res/drawable/ic_CairaLogo_background.xml" value="0.1" />
+        <entry key="..\:/proyectosAndroid/Caira2/app/src/main/res/drawable/ic_baseline_assistant_24.xml" value="0.1" />
         <entry key="..\:/proyectosAndroid/Caira2/app/src/main/res/drawable/ic_caira_logo_background.xml" value="0.135" />
         <entry key="..\:/proyectosAndroid/Caira2/app/src/main/res/drawable/ic_launcher_background.xml" value="0.135" />
         <entry key="..\:/proyectosAndroid/Caira2/app/src/main/res/drawable/ic_menu_slideshow.xml" value="0.1" />
@@ -17,10 +18,16 @@
         <entry key="..\:/proyectosAndroid/Caira2/app/src/main/res/layout/activity_welcome.xml" value="0.1" />
         <entry key="..\:/proyectosAndroid/Caira2/app/src/main/res/layout/app_bar_bodyapp.xml" value="0.11778115501519756" />
         <entry key="..\:/proyectosAndroid/Caira2/app/src/main/res/layout/content_bodyapp.xml" value="0.11778115501519756" />
+        <entry key="..\:/proyectosAndroid/Caira2/app/src/main/res/layout/fragment_dashboard.xml" value="0.16927083333333334" />
+        <entry key="..\:/proyectosAndroid/Caira2/app/src/main/res/layout/fragment_list_program.xml" value="0.16927083333333334" />
+        <entry key="..\:/proyectosAndroid/Caira2/app/src/main/res/layout/fragment_recyclerview_dashboard.xml" value="0.16927083333333334" />
         <entry key="..\:/proyectosAndroid/Caira2/app/src/main/res/layout/fragment_slideshow.xml" value="0.17604166666666668" />
         <entry key="..\:/proyectosAndroid/Caira2/app/src/main/res/layout/fragment_welcome_item.xml" value="0.264" />
-        <entry key="..\:/proyectosAndroid/Caira2/app/src/main/res/layout/login_fragment.xml" value="0.264" />
+        <entry key="..\:/proyectosAndroid/Caira2/app/src/main/res/layout/item_active_program_list.xml" value="0.16927083333333334" />
+        <entry key="..\:/proyectosAndroid/Caira2/app/src/main/res/layout/item_list_dashboard.xml" value="0.16927083333333334" />
+        <entry key="..\:/proyectosAndroid/Caira2/app/src/main/res/layout/login_fragment.xml" value="0.23045267489711935" />
         <entry key="..\:/proyectosAndroid/Caira2/app/src/main/res/layout/nav_header_bodyapp.xml" value="0.17604166666666668" />
+        <entry key="..\:/proyectosAndroid/Caira2/app/src/main/res/layout/register_fragment.xml" value="0.2248995983935743" />
         <entry key="..\:/proyectosAndroid/Caira2/app/src/main/res/menu/activity_main_drawer.xml" value="0.23846153846153847" />
         <entry key="..\:/proyectosAndroid/Caira2/app/src/main/res/menu/bodyapp.xml" value="0.1" />
         <entry key="..\:/proyectosAndroid/Caira2/app/src/main/res/mipmap-anydpi-v26/ic_CairaLogo.xml" value="0.1" />

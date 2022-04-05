@@ -9,13 +9,15 @@ class LoginViewModel : ViewModel() {
     var password = MutableLiveData<String>()
     var rememberMe = MutableLiveData<Boolean>()
     var gotoRegister = MutableLiveData<Boolean>()
-
+    var gotoDashboard = MutableLiveData<Boolean>()
     init {
         gotoRegister.value=false
+        gotoDashboard.value=false
     }
     fun login() {
         //todo logica para guardar BD
         Log.i("msg*****//////////////////", "${email.value} ///// ${password.value}")
+        gotoDashboard.value=true
     }
 
     fun register() {

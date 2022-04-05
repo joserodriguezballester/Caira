@@ -1,5 +1,6 @@
 package com.example.caira2.iu.activity
 
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.drawable.Drawable
 import android.os.Bundle
@@ -7,10 +8,12 @@ import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ImageSpan
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
+import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -21,6 +24,7 @@ import com.example.caira2.R
 import com.example.caira2.databinding.ActivityBodyappBinding
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
+
 
 
 class BodyappActivity : AppCompatActivity() {
@@ -101,6 +105,41 @@ class BodyappActivity : AppCompatActivity() {
         );
         menuInflater.inflate(R.menu.bodyapp, menu)
         return true
+    }
+
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        when (item.itemId) {
+
+            (1) -> {
+                val intent = Intent(this, WelcomeActivity::class.java)
+                startActivity(intent)
+                return true
+            }
+            2 -> {
+
+                val intent = Intent(this, WelcomeActivity::class.java)
+                startActivity(intent)
+                return true
+            }
+            3 -> {
+                val intent = Intent(this, WelcomeActivity::class.java)
+                startActivity(intent)
+                return true
+            }
+            else ->{
+                val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
+                //drawerLayout.closeDrawer(GravityCompat.START)
+
+                //* Abre Navigation Drawer.
+                drawerLayout.openDrawer(GravityCompat.START)
+            }
+        }
+        return true
+//        super.onOptionsItemSelected(item)
+//        return true
     }
 
     override fun onSupportNavigateUp(): Boolean {

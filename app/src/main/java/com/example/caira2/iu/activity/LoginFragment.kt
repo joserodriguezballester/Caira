@@ -35,6 +35,16 @@ class LoginFragment : BaseFragment<LoginFragmentBinding>(R.layout.login_fragment
                 //todo NO registrado, cambia de actividad
             }
         })
+        viewModel.gotoDashboard.observe(viewLifecycleOwner, Observer { value ->
+            Log.i("msg*****", "gotoRegister: ${value} ")
+            if(value){
+                Log.i("msg*****", "gotoRegister: ${value} ")
+                val intent = Intent(activity, BodyappActivity::class.java)
+                startActivity(intent)
+            }else{
+                //todo NO Login mostrar causas
+            }
+        })
     }
 
 
