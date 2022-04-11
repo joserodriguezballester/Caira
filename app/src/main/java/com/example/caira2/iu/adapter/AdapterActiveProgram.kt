@@ -48,7 +48,12 @@ class AdapterActiveProgram : RecyclerView.Adapter<AdapterActiveProgram.ActivePro
         private val nombreActiveProgram = view.findViewById(R.id.idNombre) as TextView
         private val info = view.findViewById(R.id.idInfo) as TextView
         private val imagen = view.findViewById(R.id.idImagen) as ImageView
+        private lateinit var miListener: AdapterActiveProgram.OnItemClickListener
 
+
+        fun setOnItemClickListener(listener: OnItemClickListener) {
+            miListener = listener
+        }
         // Relleno de los datos de la interface con cada program
         fun bind(activeProgram: ActiveProgram, contex: Context) {
             nombreActiveProgram.text = activeProgram.nombreActiveProgram
@@ -58,6 +63,18 @@ class AdapterActiveProgram : RecyclerView.Adapter<AdapterActiveProgram.ActivePro
                 //TODO SETON CLICK
                 Toast.makeText(contex, activeProgram.nombreActiveProgram, Toast.LENGTH_LONG).show()
             }
+            itemView.setOnClickListener(View.OnClickListener {
+                if (miListener != null) {
+                    val position: Int = adapterPosition
+                    if (position != RecyclerView.NO_POSITION) {
+                        miListener.onItemClick(position) // el método onclick de la interfase, en todo el row (itemView)
+                    }
+                }
+            })
         }
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(position: Int) // este es el método del onclick de la interfase
     }
 }

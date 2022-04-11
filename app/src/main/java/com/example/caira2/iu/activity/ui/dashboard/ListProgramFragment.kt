@@ -4,12 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.caira2.R
 import com.example.caira2.iu.adapter.AdapterActiveProgram
 import com.example.caira2.model.ActiveProgram
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,7 +23,9 @@ private const val ARG_PARAM2 = "param2"
  * Use the [ListProgramFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class ListProgramFragment : Fragment() {
+
+class ListProgramFragment : Fragment(),AdapterActiveProgram.OnItemClickListener {
+
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -86,5 +90,23 @@ class ListProgramFragment : Fragment() {
 //                    putString(ARG_PARAM2, param2)
             //    }
             }
+    }
+
+    override fun onItemClick(position: Int) {
+        Toast.makeText(context, "tarjeta Clickeada $position", Toast.LENGTH_SHORT).show()
+//
+//        // obtienes la posicion del row clickeado:
+//
+//        // obtienes la posicion del row clickeado:
+//        val clickedItem: Contenido = obtenerDatos().get(position)
+//
+//        // Instancias un fragment, aquí se envían los datos, suponiendo que se llame FragmentDetalle:
+//
+//        // Instancias un fragment, aquí se envían los datos, suponiendo que se llame FragmentDetalle:
+//        val f: FragmentDetalle =
+//            FragmentDetalle.newInstance(clickedItem.getTitulo(), clickedItem.getFoto())
+//        val fragmentManager: FragmentManager? = fragmentManager
+//        fragmentManager.beginTransaction().replace(R.id.container, f).addToBackStack(null).commit()
+
     }
 }

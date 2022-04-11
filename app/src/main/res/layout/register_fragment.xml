@@ -35,6 +35,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/form_margin_top"
                     android:hint="Name"
+                    app:errorEnabled="true"
                     app:startIconDrawable="@drawable/ic_menu_social"
                     >
 
@@ -42,7 +43,7 @@
                         android:id="@+id/editTextName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="textEmailAddress"
+                        android:inputType="textPersonName"
                         android:text="@={viewmodel.name}" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -64,6 +65,25 @@
                         android:text="@={viewmodel.email}" />
 
                 </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_input_layout_prefered"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/form_margin_top"
+                    android:hint="@string/preferred_course"
+                    app:startIconDrawable="@drawable/ic_baseline_email_24">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextPreferred"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textNoSuggestions"
+                        android:text="@={viewmodel.preferred}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/text_input_layout_password"
@@ -117,14 +137,14 @@
                     />
 
 
-                <com.google.android.gms.common.SignInButton
-                    android:id="@+id/sign_in_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/gradient_caira"
+<!--                <com.google.android.gms.common.SignInButton-->
+<!--                    android:id="@+id/sign_in_button"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:background="@drawable/gradient_caira"-->
 
-                    />
+<!--                    />-->
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>
