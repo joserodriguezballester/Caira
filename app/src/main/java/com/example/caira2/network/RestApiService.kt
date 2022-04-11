@@ -13,5 +13,5 @@ interface RestApiService {
     suspend fun add_user(@Body user: User): UserResponse
 
     @POST("add_user")
-    suspend fun add_user2(@Body user: User): Response<User>
+    suspend fun add_user_error(@Body user: User): Response<User>
 }
