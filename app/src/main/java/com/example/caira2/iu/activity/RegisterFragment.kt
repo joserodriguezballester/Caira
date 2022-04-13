@@ -33,25 +33,23 @@ class RegisterFragment : BaseFragment<RegisterFragmentBinding>(R.layout.register
                 val intent = Intent(activity, BodyappActivity::class.java)
                 startActivity(intent)
             } else {
-                //todo NO registrado, mostrar errores
-           //     mostrarErrores()
+                //todo NO registrado, mostrar errores por viewBinding
                 Log.i("msg*****", "goto Dashboarh: ${value} ")
-                //            binding.textInputLayoutName.error=null
                 Toast.makeText(activity, "Error en registro", Toast.LENGTH_LONG).show()
             }
         })
-        viewModel.codigoError.observe(viewLifecycleOwner, Observer {it-> viewModel.mostrarErrores()
+        viewModel.codigoError.observe(viewLifecycleOwner, Observer { it ->
+            viewModel.mostrarErrores()
             Log.i("msg*****", "dentro observer ${it}")
-        when (it){
-            400 -> {//usuario ya existe
-                Log.i("msg*****", "dentro del 400 ${viewModel.msgLiveData.value}")
-                binding.textInputLayoutEmail.error=viewModel.msgLiveData.value
+            when (it) {
+                400 -> {//usuario ya existe
+                    Log.i("msg*****", "dentro del 400 ${viewModel.msgLiveData.value}")
+                    binding.textInputLayoutEmail.error = viewModel.msgLiveData.value
+                }
+                422 -> {//nombre por mayuscula
+                    binding.textInputLayoutName.error = viewModel.msgLiveData.value
+                }
             }
-            422 ->{//nombre por mayuscula
-                binding.textInputLayoutName.error=viewModel.msgLiveData.value
-            }
-        }
-
         })
     }
 

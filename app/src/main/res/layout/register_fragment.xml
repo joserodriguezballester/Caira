@@ -75,7 +75,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/form_margin_top"
                     android:hint="@string/preferred_course"
-                    app:startIconDrawable="@drawable/ic_baseline_email_24">
+                    app:startIconDrawable="@drawable/ic_baseline_school_24">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/editTextPreferred"

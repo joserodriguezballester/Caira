@@ -32,7 +32,6 @@ object RegisterRepository {
             userlist.add(0, response)
             val responseMapeada = userlist.map { MapperImpl.toUserModel(it) }
             Log.i("msg*****", "Response service USER: ${responseMapeada[0]}")
-
 ////Mapeado
             return ApiResponse.Success(data = responseMapeada[0])
 
@@ -62,13 +61,8 @@ object RegisterRepository {
                     Log.i("*****2", "response.json=====--${errorLista.detail[0].msg}")
                 }
             }
-
-
-
             //      Log.i("msg*****", "Response valor error ${response?.toString()}")
             ApiResponse.Error(exception = e)
-
-
         } catch (e: IOException) {
             //handles no internet exception
             Log.i("msg*****", "Response error2 ${e.toString()}")

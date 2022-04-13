@@ -1,8 +1,8 @@
 package com.example.caira2.iu.activity
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.caira2.R
 
 class MainActivity : AppCompatActivity() {
@@ -13,10 +13,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun goTo() {
-      //  val intent = Intent(this, WelcomeActivity::class.java)
-         val intent = Intent(this, RegisterActivity::class.java)
-       //  val intent = Intent(this, BodyappActivity::class.java)
-
+        val intent = Intent(this, WelcomeActivity::class.java)
+        //    val intent = Intent(this, RegisterActivity::class.java)
+        //  val intent = Intent(this, BodyappActivity::class.java)
         startActivity(intent)
     }
 }

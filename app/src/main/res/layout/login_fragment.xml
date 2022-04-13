@@ -40,14 +40,14 @@
                         android:layout_marginTop="@dimen/form_margin_top"
                         android:hint="@string/email_addres"
                         app:startIconDrawable="@drawable/ic_baseline_email_24"
-                      >
-
+                        app:errorEnabled="true"
+                        >
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/editTextEmail"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="textEmailAddress"
-                            android:text="@={viewmodel.email}" />
+                            android:text="@={viewmodel._email}" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -68,15 +68,14 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="textPassword"
-                            android:text="@={viewmodel.password}" />
-
+                            android:text="@={viewmodel._password}" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <CheckBox
                         android:id="@+id/cbRemember"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:checked="@={viewmodel.rememberMe}"
+                        android:checked="@={viewmodel.remembertoMe}"
                         android:text="@string/remember_me" />
 
                     <androidx.appcompat.widget.AppCompatButton

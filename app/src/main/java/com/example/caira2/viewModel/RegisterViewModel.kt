@@ -21,13 +21,9 @@ class RegisterViewModel : ViewModel() {
     var registerResponse: LiveData<Boolean> = _registerResponse
     private val _codigoError= MutableLiveData<Int>()
     val codigoError:LiveData<Int> =_codigoError
-    //    var _codigoError = MutableLiveData<Int>()
-//    var codigoError :LiveData<Int> =_codigoError
     private val _msgLiveData = MutableLiveData<String?>()
     val msgLiveData: LiveData<String?> = _msgLiveData
 
-    var msg = MutableLiveData<String>()
-   // var codigoError: Int = 0
     private lateinit var user: User
 
     init {
@@ -74,7 +70,7 @@ class RegisterViewModel : ViewModel() {
             user_type = "Student"
         )
 
-        llamarServidor(muser)
+        llamarServidor(user)
     }
 
     fun llamarServidor(user: User) {
@@ -103,8 +99,6 @@ class RegisterViewModel : ViewModel() {
     }
 
      fun mostrarErrores() {
-
-
         when (_codigoError.value) {
             0 ->{
                 Log.i("msg*****", "Reinicio de error")
