@@ -49,72 +49,63 @@ class RegisterViewModel : ViewModel() {
             user_type = "Student"
         )
 
-        //todo logica para guardar BD
+
         Log.i(
             "msg*****",
-            "Register: ${name?.value}/// ${email.value} ///// ${password.value}///${preferred.value}"
+            "Register: ${name.value}/// ${email.value} ///// ${password.value}///${preferred.value}"
         )
-        var muser = User(
-            name = "Jar",
-            email = "jar2@gmail.com",
-            password = "123",
-            id = 1,
-            language1 = null,
-            lvl_language1 = null,
-            preferred_course1 = "",
-            preferred_course2 = null,
-            url_instagram = null,
-            url_linkedin = null,
-            url_twitter = null,
-            url_web = null,
-            user_type = "Student"
-        )
-
-        llamarServidor(user)
+         llamarServidor(user)
     }
 
     fun llamarServidor(user: User) {
+        // inicializa errores y mensajes
         _msgLiveData.postValue(null)
         _codigoError.postValue(0)
+
         viewModelScope.launch(Dispatchers.IO) {
             val response = RegisterRepository.add_user(user)
+
             if (response is ApiResponse.Success) {
                 Log.i(
                     "msg*****",
-                    "response is ApiResponse.Success: ${name?.value}/// ${email.value} ///// ${password.value}///${preferred.value}"
+                    "response is ApiResponse.Success: ${name.value}/// ${email.value} ///// ${password.value}///${preferred.value}"
                 )
                 _registerResponse.postValue(true)
             }
+            // usuario no registrado
             if (response is ApiResponse.Error) {
                 Log.i(
                     "msg*****",
-                    "response is ApiResponse.Error: ${name?.value}/// ${email.value} ///// ${password.value}///${preferred.value}"
+                    "response is ApiResponse.Error: ${name.value}/// ${email.value} ///// ${password.value}///${preferred.value}"
                 )
                 Log.i("msg*****", " Error: ${RegisterRepository.errorCode}")
+
                 _codigoError.postValue(RegisterRepository.errorCode)
-               // mostrarErrores()
                 _registerResponse.postValue(false)
             }
         }
     }
-
+    //Obtener los mensajes de error devueltos por la API
      fun mostrarErrores() {
         when (_codigoError.value) {
+            //inicializa mensaje error
             0 ->{
                 Log.i("msg*****", "Reinicio de error")
                 _msgLiveData.setValue(null)
             }
+            //usuario ya existe
             400 -> {
                 Log.i("msg*****", "entra en 400")
                 _msgLiveData.setValue(RegisterRepository.errorMsg.detail)
             }
+
             500 ->{
                 _msgLiveData.setValue(RegisterRepository.msgError)
             }
+
             else -> {
                 _msgLiveData.setValue(RegisterRepository.errorLista.detail[0].msg)
             }
-
         }
     }
 }

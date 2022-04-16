@@ -12,6 +12,13 @@ import com.example.caira2.databinding.RegisterFragmentBinding
 import com.example.caira2.others.BaseFragment
 import com.example.caira2.viewModel.RegisterViewModel
 
+/**
+ * Vista Formulario para registro de usuario
+ *
+ * Observers
+ * registerResponse -> Cambia de activity
+ * codigoError -> Muestra mensajes de error
+ */
 class RegisterFragment : BaseFragment<RegisterFragmentBinding>(R.layout.register_fragment) {
 
     companion object {
@@ -25,8 +32,8 @@ class RegisterFragment : BaseFragment<RegisterFragmentBinding>(R.layout.register
         _binding = RegisterFragmentBinding.bind(view)
         viewModel = ViewModelProvider(this).get(RegisterViewModel::class.java)
         binding.viewmodel = viewModel
-
-        viewModel.registerResponse.observe(viewLifecycleOwner, Observer { value ->
+        // RESULTADO DEL  REGISTRO
+        viewModel.registerResponse.observe(viewLifecycleOwner) { value ->
             Log.i("msg*****", "RegisterResponse: ${value} ")
             if (value) {
                 Log.i("msg*****", "goto Dashboarh: ${value} ")
@@ -37,8 +44,9 @@ class RegisterFragment : BaseFragment<RegisterFragmentBinding>(R.layout.register
                 Log.i("msg*****", "goto Dashboarh: ${value} ")
                 Toast.makeText(activity, "Error en registro", Toast.LENGTH_LONG).show()
             }
-        })
-        viewModel.codigoError.observe(viewLifecycleOwner, Observer { it ->
+        }
+
+        viewModel.codigoError.observe(viewLifecycleOwner) { it ->
             viewModel.mostrarErrores()
             Log.i("msg*****", "dentro observer ${it}")
             when (it) {
@@ -50,14 +58,6 @@ class RegisterFragment : BaseFragment<RegisterFragmentBinding>(R.layout.register
                     binding.textInputLayoutName.error = viewModel.msgLiveData.value
                 }
             }
-        })
-    }
-
-    private fun mostrarErrores() {
-//        viewModel.msgLiveData.observe(viewLifecycleOwner, Observer { value ->
-//            Log.i("msg*****", "msgLiveData ")
-//
-//            binding.textInputLayoutName.error = viewModel.msgLiveData.value.toString()
-//        })
+        }
     }
 }

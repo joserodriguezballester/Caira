@@ -11,6 +11,9 @@ import com.example.caira2.repository.LoginRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
+/**
+ * Codigo del login un usuario (Login_fragment)
+ */
 class LoginViewModel : ViewModel() {
     var _email = MutableLiveData<String>()
     var email: LiveData<String> = _email
@@ -38,39 +41,53 @@ class LoginViewModel : ViewModel() {
         _loginResponse.value = false
     }
 
+    /**
+     * Peticion a la API para logearse
+     *
+     * Recoje los datos [email] y [password], hace peticion asincrona y obtiene [UserLogin]
+     */
     fun login() {
-
-        // recoger datos
+        //inicializa errores y mensajes
         _msgLiveData.postValue(null)
         _codigoError.postValue(null)
 
+        // recoger datos
         user = UserLogin(
             email = email.value.toString(),
             password = _password.value.toString()
         )
-        // Peticion al servidor
         Log.i("msg*****///// fun login()/////////////", "${email.value} ///// ${password.value}")
+
         peticionServer(user)
         Log.i("msg*****//////////////////", "${email.value} ///// ${password.value}")
     }
 
+    /**
+     * Peticion Asincrona a la API
+     *
+     */
     private fun peticionServer(user: UserLogin) {
         viewModelScope.launch(Dispatchers.IO) {
             val response = LoginRepository.login_user(user)
+
             if (response is ApiResponse.Success) {
                 Log.i(
                     "msg*****",
                     "response is ApiResponse.Success: // ${response.data.result} "
                 )
+                // usuario logeado
                 if (response.data.result != null) {
                     // logeado
                     _loginResponse.postValue(true)
-                } else {
+                }
+                // usuario no logeado
+                else {
                     _msgLiveData.postValue(response.data.message)
                     _codigoError.postValue(response.data.code.toInt())
                     _loginResponse.postValue(false)
                 }
             }
+            // Error del Server
             if (response is ApiResponse.Error) {
                 Log.i(
                     "msg*****",
@@ -81,17 +98,29 @@ class LoginViewModel : ViewModel() {
         }
     }
 
+    /**
+     * Funcion ir a Registarse llamada desde la vista <br/>
+     * Cambia un parametro visible desde la vista para cambiar de vista (activity)
+     */
     fun register() {
         //todo pasar a register
         Log.d("msg*****", "pasar a register")
         gotoRegister.value = true
     }
 
+    /**
+     * Funcion He olvidado mi contraseña
+     * sin implementar
+     */
     fun forgot() {
         //todo pasar a forgot
         Log.d("msg*****", "pasar a forgot")
     }
 
+    /**
+     * Guarda en Share Preferents
+     *
+     */
     fun guardarSharePreferents() {
         Log.d("msg*****", "guardar preferents")
     }
