@@ -1,14 +1,17 @@
 package com.example.caira2.iu.activity.ui.dashboard
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.caira2.R
 import com.example.caira2.databinding.FragmentListProgramBinding
 import com.example.caira2.iu.adapter.AdapterActiveProgram
 
@@ -24,7 +27,7 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 
-class ListProgramFragment : Fragment(), AdapterActiveProgram.OnItemClickListener {
+class ListProgramFragment : Fragment(), AdapterActiveProgram.ItemClickListener {
     private lateinit var viewModel: DashboardViewModel
 
     //  private var _binding: FragmentDashboardBinding? = null
@@ -38,7 +41,7 @@ class ListProgramFragment : Fragment(), AdapterActiveProgram.OnItemClickListener
     lateinit var recylerActivePrograms: RecyclerView
 
     // var activeProgramsList= mutableListOf<Course>()
-    private val adaptador = AdapterActiveProgram()
+    private val adapter = AdapterActiveProgram()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,8 +72,9 @@ class ListProgramFragment : Fragment(), AdapterActiveProgram.OnItemClickListener
         viewModel.llenarDatos()
         //    llenarDatos()
         viewModel.text.observe(viewLifecycleOwner) {
-            adaptador.AdapterActiverPrograms(it, requireContext())
-            recylerActivePrograms.adapter = adaptador
+            adapter.AdapterActiverPrograms(it, requireContext())
+            recylerActivePrograms.adapter = adapter
+            adapter.setClickListener(this)
         }
         //  adaptador.AdapterActiverPrograms(activeProgramsList,requireContext())
         //   recylerActivePrograms.adapter=adaptador
@@ -97,9 +101,28 @@ class ListProgramFragment : Fragment(), AdapterActiveProgram.OnItemClickListener
             }
     }
 
-    override fun onItemClick(position: Int) {
-        Toast.makeText(context, "tarjeta Clickeada $position", Toast.LENGTH_SHORT).show()
-//
+    override fun onClick(view: View?, position: Int) {
+        Log.i("msg*****", " onClick(view: View?, position: Int) ${position}")
+        Toast.makeText(context, "tarjeta Clickeada $position", Toast.LENGTH_LONG).show()
+
+//        // Instancias un fragment, aquí se envían los datos, suponiendo que se llame FragmentDetalle:
+        val f: DetailCourseFragment =
+             DetailCourseFragment.newInstance(position,"-")
+        val fragmentManager: FragmentManager? = fragmentManager
+        if (fragmentManager != null) {
+       //     fragmentManager.beginTransaction().replace(R.id.fragmentContainerView3, f).addToBackStack("atras").commit()
+            fragmentManager.beginTransaction().replace(R.id.fragmentListActivePrograms, f).addToBackStack("atras").commit()
+
+        }
+
+
+    }
+
+
+//    override fun onItemClick(position: Int) {
+//        Log.i("msg*****", " onItemClick(position: Int) onItemClick(position: Int) ${position}")
+//        Toast.makeText(context, "tarjeta Clickeada $position", Toast.LENGTH_SHORT).show()
+////
 //        // obtienes la posicion del row clickeado:
 //
 //        // obtienes la posicion del row clickeado:
@@ -113,5 +136,5 @@ class ListProgramFragment : Fragment(), AdapterActiveProgram.OnItemClickListener
 //        val fragmentManager: FragmentManager? = fragmentManager
 //        fragmentManager.beginTransaction().replace(R.id.container, f).addToBackStack(null).commit()
 
-    }
+//}
 }

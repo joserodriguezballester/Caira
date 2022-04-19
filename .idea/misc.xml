@@ -34,8 +34,9 @@
         <entry key="..\:/proyectosAndroid/Caira2/app/src/main/res/mipmap-anydpi-v26/ic_caira_logo.xml" value="0.1" />
         <entry key="..\:/proyectosAndroid/Caira2/app/src/main/res/mipmap-anydpi-v26/ic_caira_logo_round.xml" value="0.1" />
         <entry key="..\:/proyectosAndroid/Caira2/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
+        <entry key="..\:/proyectosAndroid/Caira4/Caira/app/src/main/res/layout/fragment_detail_course.xml" value="0.11041666666666666" />
         <entry key="..\:/proyectosAndroid/Caira4/Caira/app/src/main/res/layout/fragment_list_program.xml" value="0.20833333333333334" />
-        <entry key="..\:/proyectosAndroid/Caira4/Caira/app/src/main/res/layout/item_active_program_list.xml" value="0.17447916666666666" />
+        <entry key="..\:/proyectosAndroid/Caira4/Caira/app/src/main/res/layout/item_active_program_list.xml" value="0.1" />
       </map>
     </option>
   </component>

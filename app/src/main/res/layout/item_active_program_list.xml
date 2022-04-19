@@ -78,18 +78,18 @@
                         android:layout_marginBottom="15dp"
                         android:text="Location " />
 
-                    <RatingBar
-                        android:id="@+id/ratingBar"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:numStars="5"
-                        android:rating="3"
-                        android:scaleX=".25"
-                        android:scaleY=".25"
-                        android:transformPivotX="0dp"
-                        android:transformPivotY="0dp"
-                        android:layout_weight="1"
-                        />
+<!--                    <RatingBar-->
+<!--                        android:id="@+id/ratingBar"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:numStars="5"-->
+<!--                        android:rating="3"-->
+<!--                        android:scaleX=".25"-->
+<!--                        android:scaleY=".25"-->
+<!--                        android:transformPivotX="0dp"-->
+<!--                        android:transformPivotY="0dp"-->
+<!--                        android:layout_weight="1"-->
+<!--                        />-->
 
                     <TextView
                         android:id="@+id/idPrecio"
