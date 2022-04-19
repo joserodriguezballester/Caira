@@ -13,9 +13,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun goTo() {
-        val intent = Intent(this, WelcomeActivity::class.java)
+      //  val intent = Intent(this, WelcomeActivity::class.java)
         //    val intent = Intent(this, RegisterActivity::class.java)
-        //  val intent = Intent(this, BodyappActivity::class.java)
+          val intent = Intent(this, BodyappActivity::class.java)
         startActivity(intent)
     }
 }

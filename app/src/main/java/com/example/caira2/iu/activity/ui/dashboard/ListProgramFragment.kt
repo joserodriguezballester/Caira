@@ -6,11 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.caira2.R
+import com.example.caira2.databinding.FragmentListProgramBinding
 import com.example.caira2.iu.adapter.AdapterActiveProgram
-import com.example.caira2.model.ActiveProgram
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -24,15 +24,21 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 
-class ListProgramFragment : Fragment(),AdapterActiveProgram.OnItemClickListener {
+class ListProgramFragment : Fragment(), AdapterActiveProgram.OnItemClickListener {
+    private lateinit var viewModel: DashboardViewModel
+
+    //  private var _binding: FragmentDashboardBinding? = null
+    private var _binding: FragmentListProgramBinding? = null
+    private val binding get() = _binding!!
 
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
 
-    lateinit var recylerActivePrograms:RecyclerView
-    var activeProgramsList= mutableListOf<ActiveProgram>()
-    private val adaptador= AdapterActiveProgram()
+    lateinit var recylerActivePrograms: RecyclerView
+
+    // var activeProgramsList= mutableListOf<Course>()
+    private val adaptador = AdapterActiveProgram()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,30 +53,29 @@ class ListProgramFragment : Fragment(),AdapterActiveProgram.OnItemClickListener 
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        var vista:View = inflater.inflate(R.layout.fragment_list_program, container, false)
-
-        recylerActivePrograms= vista.findViewById(R.id.reciclerIdPrograms)
-        recylerActivePrograms.layoutManager=LinearLayoutManager(context)
-        llenarDatos()
-        adaptador.AdapterActiverPrograms(activeProgramsList,requireContext())
-        recylerActivePrograms.adapter=adaptador
-
-        return vista
+        //   _binding = FragmentDashboardBinding.inflate(inflater)
+        _binding = FragmentListProgramBinding.inflate(inflater)
+        return binding.root
     }
 
-    private fun llenarDatos() {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        recylerActivePrograms = binding.reciclerIdPrograms
+        recylerActivePrograms.apply {
+            layoutManager = LinearLayoutManager(context)
 
-        activeProgramsList.add(ActiveProgram("MASTER OF COMPUTER SCIENCE","University of Upstate at Brookstone",R.drawable.uni_oxford))
-        activeProgramsList.add(ActiveProgram("MASTER OF MEDICINE","University of Upstate at Massachuches",R.drawable.uni_masachuches))
-        activeProgramsList.add(ActiveProgram("MASTER OF STACKOVERFLOW","University of Sant Google",R.drawable.uni_upv))
-        activeProgramsList.add(ActiveProgram("MASTER OF MEDICINE","University of Upstate at Massachuches",R.drawable.uni_masachuches))
-        activeProgramsList.add(ActiveProgram("MASTER OF COMPUTER SCIENCE","University of Upstate at Brookstone",R.drawable.uni_oxford))
-        activeProgramsList.add(ActiveProgram("MASTER OF MEDICINE","University of Upstate at Massachuches",R.drawable.uni_masachuches))
-        activeProgramsList.add(ActiveProgram("MASTER OF STACKOVERFLOW","University of Sant Google",R.drawable.uni_upv))
-        activeProgramsList.add(ActiveProgram("MASTER OF MEDICINE","University of Upstate at Massachuches",R.drawable.uni_masachuches))
-
-
+        }
+        viewModel = ViewModelProvider(this).get(DashboardViewModel::class.java)
+        viewModel.llenarDatos()
+        //    llenarDatos()
+        viewModel.text.observe(viewLifecycleOwner) {
+            adaptador.AdapterActiverPrograms(it, requireContext())
+            recylerActivePrograms.adapter = adaptador
+        }
+        //  adaptador.AdapterActiverPrograms(activeProgramsList,requireContext())
+        //   recylerActivePrograms.adapter=adaptador
     }
+
 
     companion object {
         /**
@@ -88,7 +93,7 @@ class ListProgramFragment : Fragment(),AdapterActiveProgram.OnItemClickListener 
 //                arguments = Bundle().apply {
 //                    putString(ARG_PARAM1, param1)
 //                    putString(ARG_PARAM2, param2)
-            //    }
+                //    }
             }
     }
 

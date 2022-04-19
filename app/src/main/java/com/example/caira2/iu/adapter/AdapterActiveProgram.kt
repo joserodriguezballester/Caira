@@ -5,63 +5,74 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.RatingBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.caira2.R
-import com.example.caira2.model.ActiveProgram
+import com.example.caira2.model.Course
 
 
 class AdapterActiveProgram : RecyclerView.Adapter<AdapterActiveProgram.ActiveProgramViewHolder>() {
 
-    var activePrograms: MutableList<ActiveProgram> = ArrayList()
+    var courses: MutableList<Course> = ArrayList()
     lateinit var contex: Context
 
-    fun AdapterActiverPrograms(lista: MutableList<ActiveProgram>, contexto: Context) {
-        this.activePrograms = lista
+    fun AdapterActiverPrograms(lista: MutableList<Course>, contexto: Context) {
+        this.courses = lista
         this.contex = contexto
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ActiveProgramViewHolder {
-        var view =
-            LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_active_program_list, null, false)
+        var view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_active_program_list, null, false)
         // view.setOnClickListener(this)
         return ActiveProgramViewHolder(view)
     }
 
-    override fun onBindViewHolder(
-        holder: ActiveProgramViewHolder,
-        position: Int
-    ) {
-        val activeProgram = activePrograms[position]
+    override fun onBindViewHolder(holder: ActiveProgramViewHolder, position: Int) {
+        val activeProgram = courses[position]
         holder.bind(activeProgram, contex)
     }
 
     override fun getItemCount(): Int {
         //TODO ver para evitar errores
-        return activePrograms.size
+        return courses.size
     }
 
     class ActiveProgramViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         //Datos de la interface de cada item
-        private val nombreActiveProgram = view.findViewById(R.id.idNombre) as TextView
-        private val info = view.findViewById(R.id.idInfo) as TextView
+
+        private val siglas = view.findViewById(R.id.idSiglas) as TextView
+        private val nombre = view.findViewById(R.id.idNombre) as TextView
+        private val tipo = view.findViewById(R.id.idTipo) as TextView
+        private val lugar = view.findViewById(R.id.idLocation) as TextView
+        private val rating = view.findViewById(R.id.ratingBar) as RatingBar
+        private val precio = view.findViewById(R.id.idPrecio) as TextView
         private val imagen = view.findViewById(R.id.idImagen) as ImageView
-        private lateinit var miListener: AdapterActiveProgram.OnItemClickListener
+
+
+
+        private lateinit var miListener: OnItemClickListener
 
 
         fun setOnItemClickListener(listener: OnItemClickListener) {
             miListener = listener
         }
+
         // Relleno de los datos de la interface con cada program
-        fun bind(activeProgram: ActiveProgram, contex: Context) {
-            nombreActiveProgram.text = activeProgram.nombreActiveProgram
-            info.text = activeProgram.university
-            imagen.setImageResource(activeProgram.imagen)
+        fun bind(course: Course, contex: Context) {
+            siglas.text=course.centerName
+            nombre.text = course.name
+            tipo.text = course.category
+            lugar.text=course.modality
+            rating.rating= 4.5F
+            precio.text=course.price.toString()
+   //         imagen.setImageResource(course.centerImg)
+
             itemView.setOnClickListener {
                 //TODO SETON CLICK
-                Toast.makeText(contex, activeProgram.nombreActiveProgram, Toast.LENGTH_LONG).show()
+                Toast.makeText(contex, course.name, Toast.LENGTH_LONG).show()
             }
             itemView.setOnClickListener(View.OnClickListener {
                 if (miListener != null) {
