@@ -64,10 +64,7 @@ class ListProgramFragment : Fragment(), AdapterActiveProgram.ItemClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         recylerActivePrograms = binding.reciclerIdPrograms
-        recylerActivePrograms.apply {
-            layoutManager = LinearLayoutManager(context)
-
-        }
+        recylerActivePrograms.apply { layoutManager = LinearLayoutManager(context) }
         viewModel = ViewModelProvider(this).get(DashboardViewModel::class.java)
         viewModel.llenarDatos()
         //    llenarDatos()
@@ -76,46 +73,25 @@ class ListProgramFragment : Fragment(), AdapterActiveProgram.ItemClickListener {
             recylerActivePrograms.adapter = adapter
             adapter.setClickListener(this)
         }
-        //  adaptador.AdapterActiverPrograms(activeProgramsList,requireContext())
-        //   recylerActivePrograms.adapter=adaptador
     }
 
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ListProgramFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
+
         fun newInstance() =
-            ListProgramFragment().apply {
-//                arguments = Bundle().apply {
-//                    putString(ARG_PARAM1, param1)
-//                    putString(ARG_PARAM2, param2)
-                //    }
-            }
+            ListProgramFragment()
     }
 
     override fun onClick(view: View?, position: Int) {
-        Log.i("msg*****", " onClick(view: View?, position: Int) ${position}")
+        Log.i("msg*****", " onClick(view: View?, position: Int) ${position}:::${adapter.courses[position]}")
         Toast.makeText(context, "tarjeta Clickeada $position", Toast.LENGTH_LONG).show()
 
 //        // Instancias un fragment, aquí se envían los datos, suponiendo que se llame FragmentDetalle:
         val f: DetailCourseFragment =
-             DetailCourseFragment.newInstance(position,"-")
+            DetailCourseFragment.newInstance(position, adapter.courses[position])
         val fragmentManager: FragmentManager? = fragmentManager
-        if (fragmentManager != null) {
-       //     fragmentManager.beginTransaction().replace(R.id.fragmentContainerView3, f).addToBackStack("atras").commit()
-            fragmentManager.beginTransaction().replace(R.id.fragmentListActivePrograms, f).addToBackStack("atras").commit()
-
-        }
-
-
+        fragmentManager?.beginTransaction()?.replace(R.id.fragmentListActivePrograms, f)
+            ?.addToBackStack("atras")?.commit()
     }
 
 

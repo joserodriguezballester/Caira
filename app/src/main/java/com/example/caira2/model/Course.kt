@@ -1,9 +1,12 @@
 package com.example.caira2.model
 
+import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 import retrofit2.http.Url
+import java.io.Serializable
 import java.net.URL
 
-data class Course( val category: String,
+data class Course ( val category: String,
                    val center_id: Double,
                    val duration: Double,
                    val id: Double,
@@ -17,4 +20,4 @@ data class Course( val category: String,
                    val vacancies_available: Double,
                   val centerName:String,
                   val centerImg:Int,
-                         )
+                         ):Serializable

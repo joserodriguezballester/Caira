@@ -41,6 +41,11 @@
     <string name="opportunities">Oportunities</string>
     <string name="contacts">Contacts</string>
     <string name="preferred_course">Prefered Course</string>
+    <string name="type">Type:</string>
+    <string name="location">Location</string>
+    <string name="duration">Duration:</string>
+    <string name="price">Price:</string>
+    <string name="get_now">Get Now</string>
 
 
 </resources>
