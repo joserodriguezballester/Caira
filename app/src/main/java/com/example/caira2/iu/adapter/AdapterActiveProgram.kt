@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.caira2.R
 import com.example.caira2.model.Course
@@ -17,15 +18,14 @@ class AdapterActiveProgram : RecyclerView.Adapter<AdapterActiveProgram.ActivePro
     lateinit var contex: Context
     private lateinit var clickListener: ItemClickListener
 
-    fun AdapterActiverPrograms(lista: MutableList<Course>, contexto: Context) {
+    fun AdapterActiveProgram(lista: MutableList<Course>, contexto: Context) {
         this.courses = lista
         this.contex = contexto
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ActiveProgramViewHolder {
         var view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_active_program_list, null, false)
-
+            .inflate(R.layout.item_active_program_list, parent, false)
         return ActiveProgramViewHolder(view)
     }
 
@@ -47,7 +47,7 @@ class AdapterActiveProgram : RecyclerView.Adapter<AdapterActiveProgram.ActivePro
 
     inner class ActiveProgramViewHolder(view: View) : RecyclerView.ViewHolder(view),View.OnClickListener {
         //Datos de la interface de cada item
-
+        private val card = view.findViewById(R.id.card) as CardView
         private val siglas = view.findViewById(R.id.idSiglas) as TextView
         private val nombre = view.findViewById(R.id.idNombre) as TextView
         private val tipo = view.findViewById(R.id.idTipo) as TextView
@@ -58,7 +58,7 @@ class AdapterActiveProgram : RecyclerView.Adapter<AdapterActiveProgram.ActivePro
 
         // Relleno de los datos de la interface con cada curso
         fun bind(course: Course, contex: Context) {
-
+          //  if (card.layoutParams!=null) card.layoutParams.width=400
             siglas.text = course.centerName
             nombre.text = course.name
             tipo.text = course.category

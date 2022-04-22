@@ -12,10 +12,10 @@
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.example.caira2.iu.activity.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_centres"
+        android:name="com.example.caira2.iu.activity.ui.centers.CentersFragment"
+        android:label="@string/menu_centres"
+        tools:layout="@layout/fragment_centers" />
 
     <fragment
         android:id="@+id/nav_slideshow"

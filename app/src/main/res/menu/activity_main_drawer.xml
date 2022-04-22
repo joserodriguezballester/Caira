@@ -13,9 +13,9 @@
             android:icon="@drawable/ic_baseline_dashboard_24"
             android:title="@string/menu_home" />
         <item
-            android:id="@+id/opportunitiesFragment"
+            android:id="@+id/nav_centres"
             android:icon="@drawable/ic_baseline_travel_explore_20"
-            android:title="@string/opportunities" />
+            android:title="@string/centers" />
         <item
 
             android:icon="@drawable/ic_baseline_people_24"

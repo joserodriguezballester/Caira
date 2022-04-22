@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.caira2.CairaAplication.Companion.prefs
 import com.example.caira2.model.UserLogin
 import com.example.caira2.network.modelResponse.ApiResponse
 import com.example.caira2.repository.LoginRepository
@@ -72,16 +73,22 @@ class LoginViewModel : ViewModel() {
 
             if (response is ApiResponse.Success) {
                 Log.i(
-                    "msg*****",
-                    "response is ApiResponse.Success: // ${response.data.result} "
+                    "msg*****", " login.Success: // ${response.data.result} "
                 )
+                //guardar en sharePreferents
+                prefs.saveResult(
+                    user.email,
+                    user.password,
+                    response.data.result.acces_token,
+                    response.data.result.token_type
+                )
+                Log.i("msg*****", "savePref ")
                 // usuario logeado
                 if (response.data.result != null) {
                     // logeado
                     _loginResponse.postValue(true)
-                }
-                // usuario no logeado
-                else {
+                } else {
+                    // usuario no logeado
                     _msgLiveData.postValue(response.data.message)
                     _codigoError.postValue(response.data.code.toInt())
                     _loginResponse.postValue(false)

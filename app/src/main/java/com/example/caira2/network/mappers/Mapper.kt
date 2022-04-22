@@ -1,13 +1,17 @@
 package com.example.caira2.network.mappers
 
+import com.example.caira2.model.Center
 import com.example.caira2.model.Course
 import com.example.caira2.model.User
+import com.example.caira2.network.modelResponse.CenterResponse
 import com.example.caira2.network.modelResponse.CourseResponse
 import com.example.caira2.network.modelResponse.UserResponse
 
 interface Mapper {
     fun toUserModel(userResponse: UserResponse): User
     fun toCourseModel(courseResponse: CourseResponse): Course
+    fun toCenterModel(centerResponse: CenterResponse): Center
+
 }
 
 object MapperImpl : Mapper {
@@ -45,6 +49,17 @@ object MapperImpl : Mapper {
             vacancies_available = courseResponse.vacancies_available,
             centerName = "UPV",
             centerImg = 1,
+        )
+    }
+
+    override fun toCenterModel(centerResponse: CenterResponse): Center {
+        return Center(
+            acronym= centerResponse.acronym,
+        email= centerResponse.email,
+        location= centerResponse.location,
+        name= centerResponse.name,
+        type_center= centerResponse.type_center,
+        url_web= centerResponse.url_web
         )
     }
 }
