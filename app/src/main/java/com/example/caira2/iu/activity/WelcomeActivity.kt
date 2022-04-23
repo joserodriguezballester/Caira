@@ -46,13 +46,13 @@ class WelcomeActivity : AppCompatActivity() {
     //    * Agrega un marcador de punto en la parte inferior
     //
     private fun addBottomDots(currentPage: Int) {
-        Log.i("Puntos: ", "pos: ${currentPage}")
+        Log.i("*****Puntos: ", "pos: ${currentPage}")
         linearPuntos.removeAllViews()
         val dotsSlide: Array<TextView?> =
             arrayOfNulls(WelcomeList.welcomeFrames.size) // numero de fragments
-        Log.i("Puntos: ", "size: ${WelcomeList.welcomeFrames.size}")
+        Log.i("*****Puntos: ", "size: ${WelcomeList.welcomeFrames.size}")
         for (i in dotsSlide.indices) {
-            Log.i("Puntos: ", "i: ${i}")
+            Log.i("*****Puntos: ", "i: ${i}")
             dotsSlide[i] = TextView(this)
             dotsSlide[i]!!.text = "\u2022"
             dotsSlide[i]!!.textSize = 52f
@@ -63,7 +63,7 @@ class WelcomeActivity : AppCompatActivity() {
         // Marca la vista
         if (dotsSlide.size > 0) {
             dotsSlide[currentPage]!!.setTextColor(resources.getColor(R.color.secondary, null))
-            Log.i("Puntos: ", "pos(if): ${currentPage}")
+            Log.i("*****Puntos: ", "pos(if): ${currentPage}")
         }
     }
 
