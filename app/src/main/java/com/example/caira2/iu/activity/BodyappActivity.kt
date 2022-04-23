@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ImageSpan
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -20,6 +21,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.caira2.CairaAplication.Companion.prefs
 import com.example.caira2.R
 import com.example.caira2.databinding.ActivityBodyappBinding
 import com.google.android.material.navigation.NavigationView
@@ -125,6 +127,8 @@ class BodyappActivity : AppCompatActivity() {
                 return true
             }
             3 -> {
+                Log.i("msg*****", "logout ")
+                prefs.closeSesion()
                 val intent = Intent(this, WelcomeActivity::class.java)
                 startActivity(intent)
                 return true
@@ -132,7 +136,6 @@ class BodyappActivity : AppCompatActivity() {
             else ->{
                 val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
                 //drawerLayout.closeDrawer(GravityCompat.START)
-
                 //* Abre Navigation Drawer.
                 drawerLayout.openDrawer(GravityCompat.START)
             }
