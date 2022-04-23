@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.caira2.R
 import com.example.caira2.databinding.LoginFragmentBinding
@@ -50,10 +49,10 @@ class LoginFragment : BaseFragment<LoginFragmentBinding>(R.layout.login_fragment
             Log.i("msg*****", "logeado: ${value} ")
             if (value) {
                 Log.i("msg*****", "gotoDashboar: ${viewModel.remembertoMe} ")
-                // VALOR DEL CHECKBOX Remember Me
-                if (viewModel.remembertoMe) {
-                    viewModel.guardarSharePreferents()
-                }
+//                // VALOR DEL CHECKBOX Remember Me
+//                if (viewModel.remembertoMe) {
+//                    viewModel.saveSharePreferents(response)
+//                }
                 val intent = Intent(activity, BodyappActivity::class.java)
                 startActivity(intent)
             }

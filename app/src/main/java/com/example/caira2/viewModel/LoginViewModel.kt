@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.caira2.CairaAplication.Companion.prefs
 import com.example.caira2.model.UserLogin
 import com.example.caira2.network.modelResponse.ApiResponse
+import com.example.caira2.network.modelResponse.UserLoginResponse
 import com.example.caira2.repository.LoginRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -70,21 +71,12 @@ class LoginViewModel : ViewModel() {
     private fun peticionServer(user: UserLogin) {
         viewModelScope.launch(Dispatchers.IO) {
             val response = LoginRepository.login_user(user)
-
             if (response is ApiResponse.Success) {
-                Log.i(
-                    "msg*****", " login.Success: // ${response.data.result} "
-                )
-                //guardar en sharePreferents
-                prefs.saveResult(
-                    user.email,
-                    user.password,
-                    response.data.result.acces_token,
-                    response.data.result.token_type
-                )
-                Log.i("msg*****", "savePref ")
-                // usuario logeado
+                Log.i("msg*****", "result${response.data.result}")
+
                 if (response.data.result != null) {
+                    //guardar en sharePreferents
+                    if (remembertoMe) saveSharePreferents(response)
                     // logeado
                     _loginResponse.postValue(true)
                 } else {
@@ -96,10 +88,7 @@ class LoginViewModel : ViewModel() {
             }
             // Error del Server
             if (response is ApiResponse.Error) {
-                Log.i(
-                    "msg*****",
-                    "response is ApiResponse.Error: /// ${email.value} ///// ${password.value}//"
-                )
+                Log.i("msg*****", "ApiResponse.Error")
                 _loginResponse.postValue(false)
             }
         }
@@ -110,7 +99,6 @@ class LoginViewModel : ViewModel() {
      * Cambia un parametro visible desde la vista para cambiar de vista (activity)
      */
     fun register() {
-        //todo pasar a register
         Log.d("msg*****", "pasar a register")
         gotoRegister.value = true
     }
@@ -128,7 +116,13 @@ class LoginViewModel : ViewModel() {
      * Guarda en Share Preferents
      *
      */
-    fun guardarSharePreferents() {
+    fun saveSharePreferents(response: ApiResponse.Success<UserLoginResponse>) {
         Log.d("msg*****", "guardar preferents")
+        prefs.saveResult(
+            user.email,
+            user.password,
+            response.data.result.acces_token,
+            response.data.result.token_type
+        )
     }
 }
