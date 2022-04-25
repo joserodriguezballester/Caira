@@ -33,5 +33,16 @@
         <item name="windowActionBar">false</item>
         <item name="background">@drawable/splash_background</item>
     </style>
+    <style name="Theme.App.Starting" parent="Theme.SplashScreen">
 
+        <item name="windowSplashScreenBackground">@color/secondary</item>
+
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_caira_logo_foreground</item>
+<!--        <item name="windowSplashScreenAnimationDuration">200</item>-->
+
+        <item name="postSplashScreenTheme">@style/Theme.Caira2</item>
+    </style>
+    <style name="Theme.SplashScreen.IconBackground">
+        <item name="windowSplashScreenIconBackgroundColor">@color/secondary</item>
+    </style>
 </resources>

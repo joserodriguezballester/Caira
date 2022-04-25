@@ -39,8 +39,8 @@ class LoginViewModel : ViewModel() {
     private lateinit var user: UserLogin
 
     init {
-        gotoRegister.value = false
-        _loginResponse.value = false
+//        gotoRegister.value = false
+//        _loginResponse.value = false
     }
 
     /**
@@ -53,15 +53,14 @@ class LoginViewModel : ViewModel() {
         _msgLiveData.postValue(null)
         _codigoError.postValue(null)
 
-        // recoger datos
+        // recoger datos de la vista
         user = UserLogin(
             email = email.value.toString(),
             password = _password.value.toString()
         )
-        Log.i("msg*****///// fun login()/////////////", "${email.value} ///// ${password.value}")
-
+        Log.i("msg***** ", "fun login() user:$user")
         peticionServer(user)
-        Log.i("msg*****//////////////////", "${email.value} ///// ${password.value}")
+
     }
 
     /**

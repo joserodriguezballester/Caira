@@ -19,8 +19,8 @@ class RegisterViewModel : ViewModel() {
     var preferred = MutableLiveData<String>()
     private var _registerResponse = MutableLiveData<Boolean>()
     var registerResponse: LiveData<Boolean> = _registerResponse
-    private val _codigoError= MutableLiveData<Int>()
-    val codigoError:LiveData<Int> =_codigoError
+    private val _codigoError = MutableLiveData<Int>()
+    val codigoError: LiveData<Int> = _codigoError
     private val _msgLiveData = MutableLiveData<String?>()
     val msgLiveData: LiveData<String?> = _msgLiveData
 
@@ -48,13 +48,9 @@ class RegisterViewModel : ViewModel() {
             url_web = null,
             user_type = "Student"
         )
+        Log.i("msg*****", "Valores Usuario: ${user}")
 
-
-        Log.i(
-            "msg*****",
-            "Register: ${name.value}/// ${email.value} ///// ${password.value}///${preferred.value}"
-        )
-         llamarServidor(user)
+        llamarServidor(user)
     }
 
     fun llamarServidor(user: User) {
@@ -66,18 +62,12 @@ class RegisterViewModel : ViewModel() {
             val response = RegisterRepository.add_user(user)
 
             if (response is ApiResponse.Success) {
-                Log.i(
-                    "msg*****",
-                    "response is ApiResponse.Success: ${name.value}/// ${email.value} ///// ${password.value}///${preferred.value}"
-                )
+                Log.i("msg*****", "response is ApiResponse.Success: $user")
                 _registerResponse.postValue(true)
             }
             // usuario no registrado
             if (response is ApiResponse.Error) {
-                Log.i(
-                    "msg*****",
-                    "response is ApiResponse.Error: ${name.value}/// ${email.value} ///// ${password.value}///${preferred.value}"
-                )
+                Log.i("msg*****", "response is ApiResponse.Success: $user")
                 Log.i("msg*****", " Error: ${RegisterRepository.errorCode}")
 
                 _codigoError.postValue(RegisterRepository.errorCode)
@@ -85,11 +75,12 @@ class RegisterViewModel : ViewModel() {
             }
         }
     }
+
     //Obtener los mensajes de error devueltos por la API
-     fun mostrarErrores() {
+    fun mostrarErrores() {
         when (_codigoError.value) {
             //inicializa mensaje error
-            0 ->{
+            0 -> {
                 Log.i("msg*****", "Reinicio de error")
                 _msgLiveData.setValue(null)
             }
@@ -99,7 +90,7 @@ class RegisterViewModel : ViewModel() {
                 _msgLiveData.setValue(RegisterRepository.errorMsg.detail)
             }
 
-            500 ->{
+            500 -> {
                 _msgLiveData.setValue(RegisterRepository.msgError)
             }
 

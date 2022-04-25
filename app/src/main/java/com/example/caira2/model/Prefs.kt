@@ -28,11 +28,10 @@ class Prefs(val context: Context) {
     fun getResult(): MutableMap<String, *>? = storage.all
 
     // Devolver un resultado
-//    fun getUserpass():String = storage.getString(SHARED_UserPass,"")!!
     fun getToken(): String = storage.getString(SHARED_TOKEN, "")!!
 
     fun closeSesion() {
         storage.edit().clear().apply()
-        Log.i("msg*****","prefs(clear):${storage.toString()}")
+        Log.i("msg*****","prefs(clear):$storage")
     }
 }

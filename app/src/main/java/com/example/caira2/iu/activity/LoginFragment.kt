@@ -49,10 +49,6 @@ class LoginFragment : BaseFragment<LoginFragmentBinding>(R.layout.login_fragment
             Log.i("msg*****", "logeado: ${value} ")
             if (value) {
                 Log.i("msg*****", "gotoDashboar: ${viewModel.remembertoMe} ")
-//                // VALOR DEL CHECKBOX Remember Me
-//                if (viewModel.remembertoMe) {
-//                    viewModel.saveSharePreferents(response)
-//                }
                 val intent = Intent(activity, BodyappActivity::class.java)
                 startActivity(intent)
             }

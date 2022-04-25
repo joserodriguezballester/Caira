@@ -18,11 +18,13 @@
 3. Dashboard
 4. Navigation Drawer
 5. Menu overflow (BodyAppActivity.kt)  
-- SplashScreen
+- SplashScreen  
+-Inicio cuando hay share preferents
 
 ## Pendiente Futuro inmediato
 
-1. Inicio cuando hay share preferents  
+1. ~~Inicio cuando hay share preferents~~  
+   * Pendiente: Cuando se registra hacer login para obtener token
 2. Diseño en pantalla horizontal  
 3. Refrescar Token
 
@@ -50,9 +52,9 @@
 - Poner Loadings
 - Refrescar Token
 + Para produccion  
-      - ~~Eliminar MainActivity~~ 
-      - Eliminar Logs  
-      - Eliminar Tokens, usuarios o demas puestos a pelo
+      - ~~Eliminar MainActivity~~   
+      - Eliminar Logs  (buscar por "msg*****")
+      - Eliminar Tokens, usuarios o demas puestos a pelo  
       - Eliminar fotos, draws inservibles
   
 
