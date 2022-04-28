@@ -31,7 +31,7 @@ object LoginRepository {
         } catch (e: HttpException) {
             //handles exception with the request
             Log.i("msg*****", "Exception ${e.toString()}")
-            Log.i("msg*****", "Response valor error ${response.toString()}")
+     //       Log.i("msg*****", "Response valor error ${response.toString()}")
             ApiResponse.Error(exception = e)
         } catch (e: IOException) {
             //handles no internet exception

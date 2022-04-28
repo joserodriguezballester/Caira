@@ -36,7 +36,7 @@ class BodyappActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        Log.i("msg*****", "creando body ")
         binding = ActivityBodyappBinding.inflate(layoutInflater)
         setContentView(binding.root)
 

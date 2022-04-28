@@ -40,7 +40,7 @@
         <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_caira_logo_foreground</item>
 <!--        <item name="windowSplashScreenAnimationDuration">200</item>-->
 
-        <item name="postSplashScreenTheme">@style/Theme.Caira2</item>
+        <item name="postSplashScreenTheme">@style/Theme.Caira2.NoActionBar</item>
     </style>
     <style name="Theme.SplashScreen.IconBackground">
         <item name="windowSplashScreenIconBackgroundColor">@color/secondary</item>

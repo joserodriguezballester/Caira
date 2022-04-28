@@ -1,6 +1,7 @@
 package com.example.caira2.iu.activity.ui.dashboard
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,7 +26,7 @@ class DashboardFragment : Fragment() {
     ): View {
         val homeViewModel =
             ViewModelProvider(this).get(DashboardViewModel::class.java)
-
+        Log.i("msg*****", "creando dashboard ")
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
 

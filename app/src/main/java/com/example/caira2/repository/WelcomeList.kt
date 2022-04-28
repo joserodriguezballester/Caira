@@ -20,6 +20,20 @@ object WelcomeList {
             R.drawable.wel_picscaira,
             R.string.estudiantes_fragment_subtitulo,
             R.string.futuro_fragment
+        ),
+        WelcomeFrame(
+            R.drawable.captura1,
+            R.string.nulo,
+            R.string.nulo
+            ),
+        WelcomeFrame(
+            R.drawable.captura2,
+            R.string.nulo,
+            R.string.nulo
+        ), WelcomeFrame(
+            R.drawable.captura3,
+            R.string.nulo,
+            R.string.nulo
+        ),
         )
-    )
 }

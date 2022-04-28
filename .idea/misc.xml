@@ -39,14 +39,19 @@
         <entry key="..\:/proyectosAndroid/Caira4/Caira/app/src/main/res/drawable/ic_caira_logo3_background.xml" value="0.1" />
         <entry key="..\:/proyectosAndroid/Caira4/Caira/app/src/main/res/drawable/ic_caira_logo_background.xml" value="0.1" />
         <entry key="..\:/proyectosAndroid/Caira4/Caira/app/src/main/res/drawable/splash_background.xml" value="0.1" />
+        <entry key="..\:/proyectosAndroid/Caira4/Caira/app/src/main/res/layout-land/activity_welcome.xml" value="0.1353615520282187" />
+        <entry key="..\:/proyectosAndroid/Caira4/Caira/app/src/main/res/layout-land/login_fragment.xml" value="0.1353615520282187" />
+        <entry key="..\:/proyectosAndroid/Caira4/Caira/app/src/main/res/layout-land/register_fragment.xml" value="0.2" />
         <entry key="..\:/proyectosAndroid/Caira4/Caira/app/src/main/res/layout/activity_main.xml" value="0.1640625" />
+        <entry key="..\:/proyectosAndroid/Caira4/Caira/app/src/main/res/layout/activity_welcome.xml" value="0.1" />
         <entry key="..\:/proyectosAndroid/Caira4/Caira/app/src/main/res/layout/fragment_centers.xml" value="0.16302083333333334" />
         <entry key="..\:/proyectosAndroid/Caira4/Caira/app/src/main/res/layout/fragment_dashboard.xml" value="0.9032258064516129" />
         <entry key="..\:/proyectosAndroid/Caira4/Caira/app/src/main/res/layout/fragment_detail_course.xml" value="0.25" />
         <entry key="..\:/proyectosAndroid/Caira4/Caira/app/src/main/res/layout/fragment_list_program.xml" value="0.20833333333333334" />
         <entry key="..\:/proyectosAndroid/Caira4/Caira/app/src/main/res/layout/item_active_program_list.xml" value="0.1" />
-        <entry key="..\:/proyectosAndroid/Caira4/Caira/app/src/main/res/layout/item_center.xml" value="0.2" />
+        <entry key="..\:/proyectosAndroid/Caira4/Caira/app/src/main/res/layout/item_center.xml" value="0.264" />
         <entry key="..\:/proyectosAndroid/Caira4/Caira/app/src/main/res/layout/login_fragment.xml" value="0.1" />
+        <entry key="..\:/proyectosAndroid/Caira4/Caira/app/src/main/res/layout/register_fragment.xml" value="0.1" />
         <entry key="..\:/proyectosAndroid/Caira4/Caira/app/src/main/res/menu/activity_main_drawer.xml" value="0.16302083333333334" />
         <entry key="..\:/proyectosAndroid/Caira4/Caira/app/src/main/res/menu/bodyapp.xml" value="0.16302083333333334" />
         <entry key="..\:/proyectosAndroid/Caira4/Caira/app/src/main/res/mipmap-anydpi-v26/ic_caira_logo.xml" value="0.1" />

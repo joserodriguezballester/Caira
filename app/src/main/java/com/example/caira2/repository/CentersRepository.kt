@@ -18,8 +18,6 @@ object CentersRepository {
         return try {
             //       response = RetrofitInstance.getRestApiServices().all_centers2()
             val token =prefs.getToken()
-      //      val token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqb3Nlcm9kcmlndWV6YmFsbGVzdGVyQGdtYWlsLmNvbSIsImV4cCI6MTY1MDYzODk5Mn0.SWdYJaTW11-rZwW8q7OD349uDDtfTZY0RbPhEyLVm6o"
-
             response = RetrofitInstance.getApiServicesToken(token).all_centers()
 
             ////////MAPEAR

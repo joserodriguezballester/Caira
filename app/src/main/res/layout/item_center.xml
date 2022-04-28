@@ -52,6 +52,7 @@
                         android:layout_marginBottom="15dp"
                         android:layout_toRightOf="@id/acro"
                         android:text="@{centre.name}"
+                        android:textSize="24dp"
                         tools:text="kkkkkk" />
 
 
@@ -88,21 +89,20 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <androidx.appcompat.widget.AppCompatButton
+                    <Button
                         android:id="@+id/buttonInfo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
-                        android:text="Info"
-                        tools:text="jjjjjjj" />
+                        android:text="Info" />
 
                     <Button
                         android:id="@+id/buttonFeed"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
-                        android:text="Button"
-                        tools:text="hhhhhhh" />
+                        android:text="Feed"
+                       />
 
                     <Button
                         android:id="@+id/buttonCourses"
@@ -110,7 +110,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:text="Courses"
-                        tools:text="gggggggg" />
+                        />
                 </RelativeLayout>
             </LinearLayout>
 

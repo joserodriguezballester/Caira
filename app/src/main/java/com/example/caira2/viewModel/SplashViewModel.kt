@@ -22,8 +22,10 @@ class SplashViewModel : ViewModel() {
      *
      */
     private fun loginUser(user: UserLogin) {
+        Log.i("msg*****", "loginUser(user: UserLogin)")
         viewModelScope.launch(Dispatchers.IO) {
             val response = LoginRepository.login_user(user)
+            Log.i("msg*****", "loginUser(user: UserLogin)::${user}")
             if (response is ApiResponse.Success) {
                 Log.i("msg*****", "result${response.data.result}")
                 if (response.data.result != null) {
@@ -53,7 +55,7 @@ class SplashViewModel : ViewModel() {
             _loginResponse.postValue(false)
         } else {
             Log.i("msg*****: ", "prefs not empty ${valores.keys}${valores.values}}")
-            val user = UserLogin(
+            var user = UserLogin(
                valores.getValue("userMail").toString(),
                 valores.getValue("userPass").toString()
             )
