@@ -31,6 +31,7 @@
 - Login
   - register
   - remember me
+  - validado de campos
 - Registro
 - Dashboard
   - Listado de cursos
@@ -44,6 +45,7 @@
 - ~~Inicio cuando hay share preferents~~
   - Pendiente: Cuando se registra hacer login para obtener token
 - ~~Diseño en pantalla horizontal~~
+- Validar campos formularios
 - Refrescar Token
 
 ## Pendiente Futuro cercano
@@ -91,7 +93,8 @@
 
 - La API con correo que no existe devuelve (code=500, message=Internal Server Error, result=null, status=Internal Server Error)
 Modificar luego en LoginFragment
-  - error 403 -> 401
-  - EndPoint Centros
-    - EndPoint Feed
-    - beared
+
+- error 403 -> 401
+- EndPoint Centros
+  - EndPoint Feed
+  - beared

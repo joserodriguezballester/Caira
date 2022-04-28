@@ -1,6 +1,7 @@
 package com.example.caira2.viewModel
 
 import android.util.Log
+import android.util.Patterns
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -12,6 +13,8 @@ import com.example.caira2.network.modelResponse.UserLoginResponse
 import com.example.caira2.repository.LoginRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.util.regex.Pattern
+
 
 /**
  * Codigo del login un usuario (Login_fragment)
@@ -47,21 +50,27 @@ class LoginViewModel : ViewModel() {
      * Peticion a la API para logearse
      *
      * Recoje los datos [email] y [password], hace peticion asincrona y obtiene [UserLogin]
+     * Bindeado desde el XML
      */
     fun login() {
         //inicializa errores y mensajes
         _msgLiveData.postValue(null)
         _codigoError.postValue(null)
 
-        // recoger datos de la vista
-        user = UserLogin(
-            email = email.value.toString(),
-            password = _password.value.toString()
-        )
-        Log.i("msg***** ", "fun login() user:$user")
-        peticionServer(user)
 
+        // RECOJER DATOS FORMULARIO
+        // Validar datos
+        if (validar()){
+            user = UserLogin(
+                email = email.value.toString(),
+                password = _password.value.toString()
+            )
+            Log.i("msg***** ", "fun login() user:$user")
+            peticionServer(user)
+        }
     }
+
+
 
     /**
      * Peticion Asincrona a la API
@@ -123,5 +132,29 @@ class LoginViewModel : ViewModel() {
             response.data.result.acces_token,
             response.data.result.token_type
         )
+    }
+
+    /**
+     * Valida los campos del formulario, muestra el error desde el livedata
+     */
+    private fun validar(): Boolean {
+        if (email.value.isNullOrEmpty()) {
+            _msgLiveData.postValue("No puede estar vacio")
+            _codigoError.postValue(10)
+            return false
+        }
+        if (password.value.isNullOrEmpty()) {
+            _msgLiveData.postValue("No puede estar vacio")
+            _codigoError.postValue(20)
+            return false
+        }
+        val pattern: Pattern = Patterns.EMAIL_ADDRESS
+
+        if (!pattern.matcher(email.value).matches()) {
+            _msgLiveData.postValue("Tiene que ser un correo valido")
+            _codigoError.postValue(11)
+            return false
+        }
+        return true
     }
 }

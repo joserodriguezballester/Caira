@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.caira2.R
 import com.example.caira2.databinding.LoginFragmentBinding
@@ -72,6 +73,26 @@ class LoginFragment : BaseFragment<LoginFragmentBinding>(R.layout.login_fragment
                 400 -> {
                     Log.i("msg*****", "dentro del 400 ${viewModel.msgLiveData.value}")
                     binding.textInputLayoutPassword.error = viewModel.msgLiveData.value
+                }
+                // Servidor Caido
+                503 -> {
+                    Log.i("msg*****", "dentro del 503 ${viewModel.msgLiveData.value}")
+                    Toast.makeText(context, viewModel.msgLiveData.value, Toast.LENGTH_LONG).show()
+                }
+                // password vacio
+                20 -> {
+                    Log.i("msg*****", "dentro del 20 ${viewModel.msgLiveData.value}")
+                    binding.textInputLayoutPassword.error = viewModel.msgLiveData.value
+                }
+                //Correo nulo
+                10 -> {
+                    Log.i("msg*****", "dentro del 10 ${viewModel.msgLiveData.value}")
+                    binding.textInputLayoutEmail.error = viewModel.msgLiveData.value
+                }
+                //Correo inválida
+                11 -> {
+                    Log.i("msg*****", "dentro del 11 ${viewModel.msgLiveData.value}")
+                    binding.textInputLayoutEmail.error = viewModel.msgLiveData.value
                 }
             }
         }
