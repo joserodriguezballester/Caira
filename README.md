@@ -26,13 +26,14 @@
 ## Realizado
 
 - SplashScreen
-  - Inicio cuando hay share preferents
+  - Inicio si hay share preferents
 - Bienvenida
 - Login
   - register
   - remember me
   - validado de campos
 - Registro
+  - validado de campos
 - Dashboard
   - Listado de cursos
   - Detalle del curso
@@ -42,11 +43,11 @@
 
 ## Pendiente Futuro inmediato
 
+- ~~Validar campos formularios~~
 - ~~Inicio cuando hay share preferents~~
-  - Pendiente: Cuando se registra hacer login para obtener token
+  - ~~Cuando se registra hacer login para obtener token~~(Falta comprobar, servidor en update)
 - ~~Diseño en pantalla horizontal~~
-- Validar campos formularios
-- Refrescar Token
+
 
 ## Pendiente Futuro cercano
 
@@ -69,7 +70,7 @@
 ### TODO
 
 - ¿Controlar conexion a Internet?
-- Controlar Datos de entrada antes de hacer peticion servidor en formularios
+- ~~Controlar Datos de entrada antes de hacer peticion servidor en formularios~~
 - Control de Errores
 - Poner Loadings
 - Refrescar Token
@@ -86,7 +87,7 @@
 - Ir directamente a la Activity de prueba (SplashActivity goTo)
 
 - Usuario registrado
-  joserodriguezballester@gmail.com
+  jar@mail.com
   123
 
 #### Comentarios

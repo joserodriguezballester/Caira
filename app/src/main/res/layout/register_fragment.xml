@@ -8,12 +8,9 @@
             name="viewmodel"
             type="com.example.caira2.viewModel.RegisterViewModel" />
     </data>
-
-    <androidx.cardview.widget.CardView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".iu.activity.RegisterActivity">
-
+        android:layout_height="wrap_content">
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -151,5 +148,5 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-    </androidx.cardview.widget.CardView>
+</ScrollView>
 </layout>

@@ -23,12 +23,12 @@ class LoginViewModel : ViewModel() {
     var _email = MutableLiveData<String>()
     var email: LiveData<String> = _email
 
-    var _password = MutableLiveData<String>()
+   var _password = MutableLiveData<String>()
     var password: LiveData<String> = _password
 
     var remembertoMe: Boolean = false
 
-    private var _loginResponse = MutableLiveData<Boolean>()
+    var _loginResponse = MutableLiveData<Boolean>()
     var loginResponse: LiveData<Boolean> = _loginResponse
 
     var gotoRegister = MutableLiveData<Boolean>()
@@ -47,19 +47,17 @@ class LoginViewModel : ViewModel() {
     }
 
     /**
-     * Peticion a la API para logearse
+     * Bindeado desde el XML Boton LOGIN
+     * Recoje los datos [email] y [password],valida, hace peticion asincrona y obtiene [UserLogin]
      *
-     * Recoje los datos [email] y [password], hace peticion asincrona y obtiene [UserLogin]
-     * Bindeado desde el XML
      */
     fun login() {
         //inicializa errores y mensajes
         _msgLiveData.postValue(null)
         _codigoError.postValue(null)
 
+        // RECOJER DATOS FORMULARIO y Validar datos
 
-        // RECOJER DATOS FORMULARIO
-        // Validar datos
         if (validar()){
             user = UserLogin(
                 email = email.value.toString(),
@@ -103,7 +101,7 @@ class LoginViewModel : ViewModel() {
     }
 
     /**
-     * Funcion ir a Registarse llamada desde la vista <br/>
+     * Funcion ir a Registarse llamada desde la vista
      * Cambia un parametro visible desde la vista para cambiar de vista (activity)
      */
     fun register() {
@@ -148,6 +146,9 @@ class LoginViewModel : ViewModel() {
             _codigoError.postValue(20)
             return false
         }
+
+
+
         val pattern: Pattern = Patterns.EMAIL_ADDRESS
 
         if (!pattern.matcher(email.value).matches()) {

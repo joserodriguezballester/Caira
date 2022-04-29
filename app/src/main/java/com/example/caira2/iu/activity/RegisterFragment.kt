@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.caira2.R
 import com.example.caira2.databinding.RegisterFragmentBinding
@@ -32,31 +31,51 @@ class RegisterFragment : BaseFragment<RegisterFragmentBinding>(R.layout.register
         _binding = RegisterFragmentBinding.bind(view)
         viewModel = ViewModelProvider(this).get(RegisterViewModel::class.java)
         binding.viewmodel = viewModel
+
         // RESULTADO DEL  REGISTRO
         viewModel.registerResponse.observe(viewLifecycleOwner) { value ->
-            Log.i("msg*****", "RegisterResponse: ${value} ")
+            Log.i("msg*****", "observer usuario registrado: ${value} ")
             if (value) {
-                Log.i("msg*****", "goto Dashboarh: ${value} ")
                 val intent = Intent(activity, BodyappActivity::class.java)
                 startActivity(intent)
             } else {
-                //todo NO registrado, mostrar errores por viewBinding
-                Log.i("msg*****", "goto Dashboarh: ${value} ")
                 Toast.makeText(activity, "Error en registro", Toast.LENGTH_LONG).show()
             }
         }
-
+        // MOSTRAR ERRORES
         viewModel.codigoError.observe(viewLifecycleOwner) { it ->
-            viewModel.mostrarErrores()
             Log.i("msg*****", "dentro observer ${it}")
+            viewModel.mostrarErrores()
             when (it) {
-                400 -> {//usuario ya existe
-                    Log.i("msg*****", "dentro del 400 ${viewModel.msgLiveData.value}")
-                    binding.textInputLayoutEmail.error = viewModel.msgLiveData.value
+                // reiniciar errores
+                0 -> {
+                    binding.textInputLayoutEmail.error = null
+                    binding.textInputLayoutPassword.error = null
+                    binding.textInputLayoutRepPassword.error =null
+                    binding.textInputLayoutPrefered.error=null
+                    binding.textInputLayoutName.error=null
                 }
-                422 -> {//nombre por mayuscula
-                    binding.textInputLayoutName.error = viewModel.msgLiveData.value
-                }
+                // Errores antes de hacer la llamada
+                //Email vacio
+                10 -> binding.textInputLayoutEmail.error = viewModel.msgLiveData.value
+                //Formato Email
+                11 -> binding.textInputLayoutEmail.error = viewModel.msgLiveData.value
+                //Password Vacio
+                20 -> binding.textInputLayoutPassword.error = viewModel.msgLiveData.value
+                //repPassword Vacio
+                30 -> binding.textInputLayoutRepPassword.error = viewModel.msgLiveData.value
+                //Password y repPassword distintos
+                31 -> binding.textInputLayoutRepPassword.error = viewModel.msgLiveData.value
+                // name Vacio
+                40 -> binding.textInputLayoutName.error = viewModel.msgLiveData.value
+                // preferred vacio
+                50 -> binding.textInputLayoutPrefered.error = viewModel.msgLiveData.value
+                // Errores devueltos por la API
+
+                //usuario ya existe
+                400 -> binding.textInputLayoutEmail.error = viewModel.msgLiveData.value
+                //nombre por mayuscula
+                422 -> binding.textInputLayoutName.error = viewModel.msgLiveData.value
             }
         }
     }

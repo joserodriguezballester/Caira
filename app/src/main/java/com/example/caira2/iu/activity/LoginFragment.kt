@@ -23,9 +23,6 @@ import com.example.caira2.viewModel.LoginViewModel
  */
 class LoginFragment : BaseFragment<LoginFragmentBinding>(R.layout.login_fragment) {
 
-    companion object {
-        fun newInstance() = LoginFragment()
-    }
 
     private lateinit var viewModel: LoginViewModel
 

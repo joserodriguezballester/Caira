@@ -13,9 +13,10 @@ import retrofit2.http.POST
 
 interface RestApiService {
 
+
     @POST("add_user")
     suspend fun add_user(@Body user: User): UserResponse
-
+    //(add_user devuelve distintos JSON por eso hay que hacer otra llamada para obtener el error)
     @POST("add_user")
     suspend fun add_user_error(@Body user: User): Response<User>
 
@@ -24,7 +25,6 @@ interface RestApiService {
 
     @GET("all_courses")
     suspend fun all_courses(): MutableList<CourseResponse>
-
 
     @GET("all_centers")
     suspend fun all_centers(): MutableList<CenterResponse>
