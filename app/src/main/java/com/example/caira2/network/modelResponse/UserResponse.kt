@@ -15,5 +15,7 @@ data class UserResponse(
     @SerializedName("url_linkedin") val url_linkedin: String?,
     @SerializedName("url_twitter") val url_twitter: String?,
     @SerializedName("url_web") val url_web: String?,
-    @SerializedName("user_type") val user_type: String?
+    @SerializedName("user_type") val user_type: String?,
+    @SerializedName("logo") val logo: String?,
+    @SerializedName("banner") val banner: String?
 )

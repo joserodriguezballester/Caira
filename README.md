@@ -23,6 +23,11 @@
 <img src="./images(README)/Captura8.PNG " alt="drawing" width="200"/>
 <img src="./images(README)/Captura7.PNG " alt="drawing" width="400"/>
 
+### Dashboard
+
+<img src="./images(README)/Captura12.PNG " alt="drawing" width="200"/>
+
+
 ## Realizado
 
 - SplashScreen
@@ -47,6 +52,7 @@
 - ~~Inicio cuando hay share preferents~~
   - ~~Cuando se registra hacer login para obtener token~~(Falta comprobar, servidor en update)
 - ~~Diseño en pantalla horizontal~~
+- ~~Actualizar la app a la nueva API (1.1.0)~~
 
 
 ## Pendiente Futuro cercano
@@ -69,10 +75,10 @@
 
 ### TODO
 
-- ¿Controlar conexion a Internet?
+- ~~¿Controlar conexion a Internet?~~ (Verificar e indicar al usuario)
 - ~~Controlar Datos de entrada antes de hacer peticion servidor en formularios~~
 - Control de Errores
-- Poner Loadings
+- ~~Poner Loadings~~
 - Refrescar Token
 - HTTP 503 Service Unavailable
 
@@ -92,8 +98,8 @@
 
 #### Comentarios
 
-- La API con correo que no existe devuelve (code=500, message=Internal Server Error, result=null, status=Internal Server Error)
-Modificar luego en LoginFragment
+- La API con: "correo que no existe" -> devuelve (code=500, message=Internal Server Error, result=null, status=Internal Server Error)
+
 
 - error 403 -> 401
 - EndPoint Centros

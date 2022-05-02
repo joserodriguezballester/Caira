@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.caira2.R
@@ -31,10 +32,11 @@ class RegisterFragment : BaseFragment<RegisterFragmentBinding>(R.layout.register
         _binding = RegisterFragmentBinding.bind(view)
         viewModel = ViewModelProvider(this).get(RegisterViewModel::class.java)
         binding.viewmodel = viewModel
-
+        val indicator: ProgressBar = binding.circularIndicator!!
         // RESULTADO DEL  REGISTRO
         viewModel.registerResponse.observe(viewLifecycleOwner) { value ->
             Log.i("msg*****", "observer usuario registrado: ${value} ")
+
             if (value) {
                 val intent = Intent(activity, BodyappActivity::class.java)
                 startActivity(intent)
@@ -76,6 +78,19 @@ class RegisterFragment : BaseFragment<RegisterFragmentBinding>(R.layout.register
                 400 -> binding.textInputLayoutEmail.error = viewModel.msgLiveData.value
                 //nombre por mayuscula
                 422 -> binding.textInputLayoutName.error = viewModel.msgLiveData.value
+            }
+        }
+
+        // MOSTRAR PROGRESSBAR
+        viewModel.mostrarProgressBar.observe(viewLifecycleOwner) { value ->
+            Log.i("msg*****", "mostrarProgressBar: ${value} ")
+
+            if (value) {
+                Log.i("msg*****", "mostrarProgressBar: ${value} ")
+                binding.circularIndicator.visibility=View.VISIBLE
+            } else {
+                Log.i("msg*****", "mostrarProgressBar: ${value} ")
+                binding.circularIndicator.visibility=View.GONE
             }
         }
     }

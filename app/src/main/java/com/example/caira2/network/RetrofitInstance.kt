@@ -14,7 +14,7 @@ class client : OkHttpClient() {
 }
 
 object RetrofitInstance {
-    val BASE_URL = "https://apicaira.lunarxy.com/"
+    val BASE_URL = "https://apicaira.lunarxy.com/api/"
 
     /**
      * Inserta token de autorización

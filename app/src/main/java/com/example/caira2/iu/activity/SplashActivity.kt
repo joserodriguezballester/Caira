@@ -1,14 +1,20 @@
 package com.example.caira2.iu.activity
 
+import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.ViewTreeObserver
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.ViewModelProvider
 import com.example.caira2.viewModel.SplashViewModel
+
 
 class SplashActivity : AppCompatActivity() {
     private lateinit var viewModel: SplashViewModel
@@ -17,10 +23,17 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         val splashScreen = installSplashScreen()
         super.onCreate(savedInstanceState)
-        Log.i("msg*****: ", "Splasscreen")
+        Log.i("msg*****: ", "Splashcreen")
         // HACER AQUI EL LOGIN
         viewModel = ViewModelProvider(this)[SplashViewModel::class.java]
         viewModel.initialLogin()
+
+        if(isInternetAvailable(this)) {
+            Log.i("msg*****", "con internet ")
+        }else{
+            Log.i("msg*****", "sin internet ")
+            Toast.makeText(this,"Conectate a Internet",Toast.LENGTH_LONG).show()
+        }
 
   //      goTo()
 
@@ -58,6 +71,23 @@ class SplashActivity : AppCompatActivity() {
 
 
         //  finish()
+
+    }
+    private fun isInternetAvailable(context: Context): Boolean {
+        var result = false
+        val connectivityManager =
+            context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            val networkCapabilities = connectivityManager.activeNetwork ?: return false
+            val actNw =connectivityManager.getNetworkCapabilities(networkCapabilities) ?: return false
+            result = when {
+                actNw.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
+                actNw.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
+                actNw.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> true
+                else -> false
+            }
+        Log.i("msg*****", " internet::$result ")
+       
+        return result
 
     }
 

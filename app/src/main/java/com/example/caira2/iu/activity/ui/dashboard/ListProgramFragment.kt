@@ -63,11 +63,7 @@ class ListProgramFragment : Fragment(), AdapterActiveProgram.ItemClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        recylerActivePrograms = binding.reciclerIdPrograms
-//        recylerActivePrograms.apply {
-//            layoutManager = LinearLayoutManager(context)
-//            this.setHasFixedSize(true)
-//        }
+
         viewModel = ViewModelProvider(this).get(DashboardViewModel::class.java)
         viewModel.llenarDatos()
         //    llenarDatos()
@@ -79,8 +75,6 @@ class ListProgramFragment : Fragment(), AdapterActiveProgram.ItemClickListener {
                 adapter.AdapterActiveProgram(datos, requireContext())
                it.adapter=adapter
             }
-         //   adapter.AdapterActiverPrograms(datos, requireContext())
-        //    recylerActivePrograms.adapter = adapter
             adapter.setClickListener(this)
         }
     }

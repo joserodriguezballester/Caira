@@ -39,6 +39,9 @@ class LoginViewModel : ViewModel() {
     private val _msgLiveData = MutableLiveData<String?>()
     val msgLiveData: LiveData<String?> = _msgLiveData
 
+    private var _mostrarProgressBar = MutableLiveData<Boolean>()
+    var mostrarProgressBar: LiveData<Boolean> = _mostrarProgressBar
+
     private lateinit var user: UserLogin
 
     init {
@@ -75,6 +78,7 @@ class LoginViewModel : ViewModel() {
      *
      */
     private fun peticionServer(user: UserLogin) {
+        _mostrarProgressBar.value=true
         viewModelScope.launch(Dispatchers.IO) {
             val response = LoginRepository.login_user(user)
             if (response is ApiResponse.Success) {
@@ -84,11 +88,13 @@ class LoginViewModel : ViewModel() {
                     //guardar en sharePreferents
                     if (remembertoMe) saveSharePreferents(response)
                     // logeado
+                    _mostrarProgressBar.postValue(false)
                     _loginResponse.postValue(true)
                 } else {
                     // usuario no logeado
                     _msgLiveData.postValue(response.data.message)
                     _codigoError.postValue(response.data.code.toInt())
+                    _mostrarProgressBar.postValue(false)
                     _loginResponse.postValue(false)
                 }
             }

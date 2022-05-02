@@ -9,8 +9,13 @@ data class CourseResponse(
     val modality: String,
     val name: String,
     val price: Double,
-    val price_enrollment: Double,
-    val scholarship: String,
+    val price_enrollment: Double?,
+    val scholarship: String?,
     val vacancies: Double,
-    val vacancies_available: Double
+    val vacancies_available: Double?,
+    val description: String,
+    val location: String,
+    val image: String,
+    val center: CenterResponse
+
 )

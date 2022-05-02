@@ -29,11 +29,13 @@ object MapperImpl : Mapper {
             url_linkedin = userResponse.url_linkedin,
             url_twitter = userResponse.url_twitter,
             url_web = userResponse.url_web,
-            user_type = userResponse.user_type
+            user_type = userResponse.user_type,
+            logo = userResponse.logo,
+            banner = userResponse.banner
         )
     }
 
-     override fun toCourseModel(courseResponse: CourseResponse): Course {
+    override fun toCourseModel(courseResponse: CourseResponse): Course {
         return Course(
             category = courseResponse.category,
             center_id = courseResponse.center_id,
@@ -47,19 +49,27 @@ object MapperImpl : Mapper {
             scholarship = courseResponse.scholarship,
             vacancies = courseResponse.vacancies,
             vacancies_available = courseResponse.vacancies_available,
-            centerName = "UPV",
-            centerImg = 1,
+            centerName = courseResponse.center.name,
+            centerlogo = courseResponse.center.logo,
+            centerAcronyum = courseResponse.center.acronym,
+            description = courseResponse.description,
+            location = courseResponse.location,
+            image = courseResponse.image
         )
     }
 
     override fun toCenterModel(centerResponse: CenterResponse): Center {
         return Center(
-            acronym= centerResponse.acronym,
-        email= centerResponse.email,
-        location= centerResponse.location,
-        name= centerResponse.name,
-        type_center= centerResponse.type_center,
-        url_web= centerResponse.url_web
+            acronym = centerResponse.acronym,
+            email = centerResponse.email,
+            location = centerResponse.location,
+            name = centerResponse.name,
+            type_center = centerResponse.type_center,
+            website = centerResponse.website,
+            id =centerResponse.id,
+            logo = centerResponse.logo,
+            banner = centerResponse.banner,
+            description = centerResponse.description
         )
     }
 }

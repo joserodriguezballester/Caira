@@ -24,9 +24,9 @@ object LoginRepository {
         Log.i("msg*****", "suspend fun login user ${user.email} ///${user.password} ")
 
         return try {
-            response = RetrofitInstance.getRestApiServices().login_user(user)
+         response = RetrofitInstance.getRestApiServices().login_user(user)
             Log.i("msg*****", "Response service ${response.toString()}")
-            return ApiResponse.Success(data = response)
+            return ApiResponse.Success(data = response )
 
         } catch (e: HttpException) {
             //handles exception with the request

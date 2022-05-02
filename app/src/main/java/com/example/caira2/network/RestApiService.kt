@@ -20,7 +20,7 @@ interface RestApiService {
     @POST("add_user")
     suspend fun add_user_error(@Body user: User): Response<User>
 
-    @POST("user-login")
+    @POST("user_login")
     suspend fun login_user(@Body user: UserLogin): UserLoginResponse
 
     @GET("all_courses")
@@ -36,6 +36,9 @@ interface RestApiService {
 
     @GET("all_centers")
     suspend fun all_centers2(): Any
+
+    @POST("user-login")
+    suspend fun login_user2(@Body user: UserLogin): Any
 
 
 }

@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".iu.activity.WelcomeActivity">
 
     <ScrollView
@@ -14,12 +15,14 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/view_pager_id"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 android:layout_weight="1"
-                android:contentDescription="descripcion_app" />
+                android:contentDescription="descripcion_app"
+                />
 
             <LinearLayout
                 android:id="@+id/linearPuntos"
@@ -38,6 +41,9 @@
                 android:layout_weight="2" />
         </LinearLayout>
 <!--        </LinearLayout>-->
-    </ScrollView>
+
+     </ScrollView>
+
+
 
 </FrameLayout>

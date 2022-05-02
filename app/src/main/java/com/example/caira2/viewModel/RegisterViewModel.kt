@@ -2,12 +2,14 @@ package com.example.caira2.viewModel
 
 import android.util.Log
 import android.util.Patterns
+import android.view.View
+import android.widget.ProgressBar
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.caira2.CairaAplication
 import com.example.caira2.CairaAplication.Companion.prefs
+import com.example.caira2.R
 import com.example.caira2.model.User
 import com.example.caira2.model.UserLogin
 import com.example.caira2.network.modelResponse.ApiResponse
@@ -33,6 +35,9 @@ class RegisterViewModel : ViewModel() {
     private val _msgLiveData = MutableLiveData<String?>()
     val msgLiveData: LiveData<String?> = _msgLiveData
 
+    private var _mostrarProgressBar = MutableLiveData<Boolean>()
+    var mostrarProgressBar: LiveData<Boolean> = _mostrarProgressBar
+
     private lateinit var user: User
 
     /**
@@ -56,7 +61,7 @@ class RegisterViewModel : ViewModel() {
                     name = name.value.toString(),
                     email = email.value.toString(),
                     password = password.value.toString(),
-                    id = 1,
+                    id = null,
                     language1 = null,
                     lvl_language1 = null,
                     preferred_course1 = preferred.value.toString(),
@@ -65,7 +70,9 @@ class RegisterViewModel : ViewModel() {
                     url_linkedin = null,
                     url_twitter = null,
                     url_web = null,
-                    user_type = "Student"
+                    user_type = "Student",
+                    logo = null,
+                    banner = null
                 )
                 Log.i("msg*****", "Valores Usuario: ${user}")
             } catch (e: Exception) {
@@ -81,9 +88,9 @@ class RegisterViewModel : ViewModel() {
      * ademas logea al usuario para obtener token
      */
     private fun registrarUsuario(user: User) {
+       _mostrarProgressBar.value=true
         viewModelScope.launch(Dispatchers.IO) {
             val response = RegisterRepository.add_user(user)
-
             if (response is ApiResponse.Success) {
                 Log.i("msg*****", "response is ApiResponse.Success: $user")
                 // logearse para obtener token
@@ -95,6 +102,7 @@ class RegisterViewModel : ViewModel() {
                 Log.i("msg*****", "response is ApiResponse.Success: $user")
                 Log.i("msg*****", " Error: ${RegisterRepository.errorCode}")
                 _codigoError.postValue(RegisterRepository.errorCode)
+                _mostrarProgressBar.postValue(false)
                 _registerResponse.postValue(false)
             }
         }
@@ -181,7 +189,7 @@ class RegisterViewModel : ViewModel() {
                 if (response.data.result != null) {
                     // usuario logeado
                     Log.i("msg*****", "usuario logeado")
-                   prefs.saveResult(
+                    prefs.saveResult(
                         user.email,
                         user.password,
                         response.data.result.acces_token,

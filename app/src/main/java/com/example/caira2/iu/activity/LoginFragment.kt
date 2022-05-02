@@ -11,6 +11,7 @@ import com.example.caira2.databinding.LoginFragmentBinding
 import com.example.caira2.others.BaseFragment
 import com.example.caira2.viewModel.LoginViewModel
 
+
 /**
  * Muestra el formulario para poder hacer login
  *
@@ -49,6 +50,9 @@ class LoginFragment : BaseFragment<LoginFragmentBinding>(R.layout.login_fragment
                 Log.i("msg*****", "gotoDashboar: ${viewModel.remembertoMe} ")
                 val intent = Intent(activity, BodyappActivity::class.java)
                 startActivity(intent)
+            } else {
+                // TODO mostrar informacion de no logueado
+                Toast.makeText(context, "no logeadi", Toast.LENGTH_LONG).show()
             }
         }
 
@@ -93,5 +97,16 @@ class LoginFragment : BaseFragment<LoginFragmentBinding>(R.layout.login_fragment
                 }
             }
         }
+
+        // MOSTRAR PROGRESSBAR
+        viewModel.mostrarProgressBar.observe(viewLifecycleOwner) { value ->
+            if (value) {
+                binding.circularIndicator.visibility = View.VISIBLE
+            } else {
+                binding.circularIndicator.visibility = View.GONE
+            }
+        }
+
     }
+
 }
