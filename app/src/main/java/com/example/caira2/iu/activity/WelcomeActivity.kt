@@ -10,11 +10,9 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.caira2.R
 import com.example.caira2.iu.adapter.WelcomeAdapter
 import com.example.caira2.repository.WelcomeList
-import com.mikhaellopez.circularprogressbar.CircularProgressBar
 import kotlinx.android.synthetic.main.activity_welcome.*
 import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.launch
-import android.widget.ProgressBar
+
 
 class WelcomeActivity : AppCompatActivity() {
     private lateinit var welcomeAdapter: WelcomeAdapter

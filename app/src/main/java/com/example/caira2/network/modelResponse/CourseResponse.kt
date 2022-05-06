@@ -2,7 +2,7 @@ package com.example.caira2.network.modelResponse
 
 data class CourseResponse(
     val category: String,
-    val center_id: Double,
+    val center_id: Int,
     val duration: Double,
     val id: Double,
     val language: String,

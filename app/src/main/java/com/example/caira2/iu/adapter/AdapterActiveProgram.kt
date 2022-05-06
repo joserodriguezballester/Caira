@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.caira2.R
 import com.example.caira2.model.Course
 
@@ -41,11 +42,11 @@ class AdapterActiveProgram : RecyclerView.Adapter<AdapterActiveProgram.ActivePro
 
 
     fun setClickListener(itemClickListener: ItemClickListener) {
-       clickListener = itemClickListener
+        clickListener = itemClickListener
     }
 
-
-    inner class ActiveProgramViewHolder(view: View) : RecyclerView.ViewHolder(view),View.OnClickListener {
+    inner class ActiveProgramViewHolder(view: View) : RecyclerView.ViewHolder(view),
+        View.OnClickListener {
         //Datos de la interface de cada item
         private val card = view.findViewById(R.id.card) as CardView
         private val siglas = view.findViewById(R.id.idSiglas) as TextView
@@ -57,32 +58,38 @@ class AdapterActiveProgram : RecyclerView.Adapter<AdapterActiveProgram.ActivePro
         private val imagen = view.findViewById(R.id.idImagen) as ImageView
 
         // Relleno de los datos de la interface con cada curso
-        fun bind(course: Course, contex: Context) {
-          //  if (card.layoutParams!=null) card.layoutParams.width=400
-            siglas.text = course.centerName
+        fun bind(course: Course, context: Context) {
+            //  if (card.layoutParams!=null) card.layoutParams.width=400
+            siglas.text = course.center.acronym
             nombre.text = course.name
             tipo.text = course.category
             lugar.text = course.modality
             //        mrating.rating= 4.5F
             precio.text = course.price.toString()
-            //         imagen.setImageResource(course.centerImg)
-
+            val imgUrl="https://apicaira.lunarxy.com"+course.image.substring(1)
+            Glide.with(context).load(imgUrl).into(imagen);
             itemView.setOnClickListener(View.OnClickListener {
 
-                    val position: Int = adapterPosition
-                    if (position != RecyclerView.NO_POSITION) {
-                        clickListener.onClick(it,position) // el método onclick de la interfase, en todo el row (itemView)
-                    }
+                val position: Int = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    clickListener.onClick(
+                        it,
+                        position
+                    ) // el método onclick de la interfase, en todo el row (itemView)
+                }
 
             })
         }
 
         override fun onClick(view: View?) {
-            clickListener.onClick(view, adapterPosition); // call the onClick in the OnItemClickListenerTODO("Not yet implemented")
+            clickListener.onClick(
+                view,
+                adapterPosition
+            ); // call the onClick in the OnItemClickListenerTODO("Not yet implemented")
         }
     }
 
- interface ItemClickListener {
-    fun onClick(view: View?, position: Int)
-}
+    interface ItemClickListener {
+        fun onClick(view: View?, position: Int)
+    }
 }

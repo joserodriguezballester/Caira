@@ -10,6 +10,7 @@ import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Path
 
 interface RestApiService {
 
@@ -28,6 +29,9 @@ interface RestApiService {
 
     @GET("all_centers")
     suspend fun all_centers(): MutableList<CenterResponse>
+
+    @GET("get_courses/{id}")
+    suspend fun all_courses_one_center(@Path("id") id:Int): MutableList<CourseResponse>
 
     /// DEBUG
 

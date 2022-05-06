@@ -78,8 +78,10 @@
 - ~~¿Controlar conexion a Internet?~~ (Verificar e indicar al usuario)
 - ~~Controlar Datos de entrada antes de hacer peticion servidor en formularios~~
 - Control de Errores
+  - Imagen no encontrada
 - ~~Poner Loadings~~
 - Refrescar Token
+- Quitar loading cuando no esta logueado
 - HTTP 503 Service Unavailable
 
 - Para produccion
@@ -102,6 +104,6 @@
 
 
 - error 403 -> 401
-- EndPoint Centros
+- EndPoind cursos por centro
   - EndPoint Feed
   - beared

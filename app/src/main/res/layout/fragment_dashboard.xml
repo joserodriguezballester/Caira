@@ -4,14 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/fragmentDashboard"
     >
-    <androidx.fragment.app.FragmentContainerView
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/reciclerIdPrograms"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/fragmentContainerView3"
-        android:name="com.example.caira2.iu.activity.ui.dashboard.ListProgramFragment"
-        tools:layout="@layout/fragment_dashboard"/>
-
-
+        android:layout_height="match_parent" />
+<!--        <androidx.fragment.app.FragmentContainerView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:id="@+id/fragmentContainerView3"-->
+<!--            android:name="com.example.caira2.iu.activity.ui.dashboard.ListProgramFragment"-->
+<!--            tools:layout="@layout/fragment_dashboard"/>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

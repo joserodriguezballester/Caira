@@ -38,7 +38,6 @@ class CentersFragment : Fragment(), RecyclerViewCentersClickListener {
                 it.adapter = CentersAdapter(datos,this)
             }
         }
-
         return root
     }
 
@@ -47,8 +46,6 @@ class CentersFragment : Fragment(), RecyclerViewCentersClickListener {
         Log.i("msg*****", "onCreate")
         viewModel = ViewModelProvider(this)[CentersViewModel::class.java]
         viewModel.getCenters()
-
-
     }
 
     override fun onDestroyView() {
@@ -73,5 +70,4 @@ class CentersFragment : Fragment(), RecyclerViewCentersClickListener {
             }
         }
     }
-
 }

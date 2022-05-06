@@ -1,5 +1,7 @@
 package com.example.caira2.model
 
+import java.io.Serializable
+
 data class Center(
     val id: Int,
     val acronym: String,
@@ -10,5 +12,6 @@ data class Center(
     val logo: String?,
     val banner: String?,
     val description: String,
-    val website: String?
-)
+    val website: String?,
+    val imgUrl:String?,
+): Serializable

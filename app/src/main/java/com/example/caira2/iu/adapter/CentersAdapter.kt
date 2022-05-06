@@ -6,10 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.caira2.R
 import com.example.caira2.databinding.ItemCenterBinding
 import com.example.caira2.model.Center
 import com.example.caira2.model.Course
+import kotlinx.android.synthetic.main.item_center.view.*
 
 /**
  * Adaptador
@@ -31,6 +33,7 @@ class CentersAdapter(
     override fun onBindViewHolder(holder: CentersViewHolder, position: Int) {
         //relacionar vista del item con los datos
         holder.itemCenterBinding.centre = centers[position] //centre es la variable del XML
+        Glide.with(holder.itemView).load( centers[position].imgUrl).into(holder.itemView.imageView);
         holder.itemCenterBinding.root.setOnClickListener {
             Log.i("msg*****", "click item")
             listener.onRecyclerViewItemClick(holder.itemView,centers[position])

@@ -36,6 +36,19 @@ object MapperImpl : Mapper {
     }
 
     override fun toCourseModel(courseResponse: CourseResponse): Course {
+        val center = Center(
+            id = courseResponse.center.id,
+            acronym = courseResponse.center.acronym,
+            type_center = courseResponse.center.type_center,
+            name = courseResponse.center.name,
+            email = courseResponse.center.email,
+            location = courseResponse.center.location,
+            logo = courseResponse.center.logo,
+            banner = courseResponse.center.banner,
+            description = courseResponse.center.description,
+            website = courseResponse.center.website,
+            imgUrl =""
+        )
         return Course(
             category = courseResponse.category,
             center_id = courseResponse.center_id,
@@ -49,12 +62,10 @@ object MapperImpl : Mapper {
             scholarship = courseResponse.scholarship,
             vacancies = courseResponse.vacancies,
             vacancies_available = courseResponse.vacancies_available,
-            centerName = courseResponse.center.name,
-            centerlogo = courseResponse.center.logo,
-            centerAcronyum = courseResponse.center.acronym,
             description = courseResponse.description,
             location = courseResponse.location,
-            image = courseResponse.image
+            image = courseResponse.image,
+            center = center
         )
     }
 
@@ -66,10 +77,11 @@ object MapperImpl : Mapper {
             name = centerResponse.name,
             type_center = centerResponse.type_center,
             website = centerResponse.website,
-            id =centerResponse.id,
+            id = centerResponse.id,
             logo = centerResponse.logo,
             banner = centerResponse.banner,
-            description = centerResponse.description
+            description = centerResponse.description,
+            imgUrl = "https://apicaira.lunarxy.com" + centerResponse.logo?.substring(1)
         )
     }
 }
