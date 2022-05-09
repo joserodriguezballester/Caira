@@ -27,6 +27,11 @@
 
 <img src="./images(README)/Captura12.PNG " alt="drawing" width="200"/>
 
+## Al modificar Datos del Servidor
+
+### RetrofitInstance.kt
+- la ruta de las imagenes es BASE_IMG_URL
+- la ruta de la Api es BASE_URL
 
 ## Realizado
 
@@ -45,6 +50,7 @@
 - Navigation Drawer
 - Menu overflow (BodyAppActivity.kt)
   - Logout
+- Agregadas fuentes
 
 ## Pendiente Futuro inmediato
 
@@ -104,6 +110,6 @@
 
 
 - error 403 -> 401
-- EndPoind cursos por centro
+
   - EndPoint Feed
   - beared

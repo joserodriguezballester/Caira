@@ -9,7 +9,12 @@
     <color name="white">#FFFFFFFF</color>
     <color name="sidenavdark">#2c323f</color>
     <color name="primary">#624585</color>
-    <color name="secondary">#b857cd</color>
+    <color name="secondary">#FB95F3</color>
     <color name="enlace">#FF6200EE</color>
     <color name="BlancoTransparente">#cccccc</color>
+
+    <color name="cairaWhite">#f2f2f2</color>
+    <color name="cairaPurple">#252859</color>
+    <color name="cairaPink">#FB95F3</color>
+
 </resources>

@@ -15,8 +15,8 @@ import com.bumptech.glide.Glide
 import com.example.caira2.R
 import com.example.caira2.databinding.FragmentDetailCourseBinding
 import com.example.caira2.iu.adapter.AdapterActiveProgram
-import com.example.caira2.model.Center
 import com.example.caira2.model.Course
+import com.example.caira2.network.BASE_IMG_URL
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -33,7 +33,8 @@ private var valor = true
 class DetailCourseFragment : Fragment(), AdapterActiveProgram.ItemClickListener {
     private var position: Int? = null
     private lateinit var course: Course
-    private lateinit var centre: Center
+
+    //  private lateinit var centre: Center
     private var _binding: FragmentDetailCourseBinding? = null
     private val binding get() = _binding!!
     private lateinit var viewModel: DetailCourseViewModel
@@ -66,7 +67,6 @@ class DetailCourseFragment : Fragment(), AdapterActiveProgram.ItemClickListener 
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         _binding = FragmentDetailCourseBinding.inflate(inflater, container, false)
         val view = binding.root
 
@@ -76,12 +76,12 @@ class DetailCourseFragment : Fragment(), AdapterActiveProgram.ItemClickListener 
 //        }
 
         // llenar card Universidad
-        val include = binding.includeItemCenter //relacionar vista del item con los datos
-        with(include) {
+        with(binding.includeItemCenter) {//relacionar vista del item con los datos
             centre = course.center  //centre es la variable del XML
-            //      Glide.with(itemView).load( centers[position].imgUrl).into(holder.itemView.imageView);
-            val imgUrl = "https://apicaira.lunarxy.com" + course.center.logo?.substring(1)
+
+            val imgUrl = BASE_IMG_URL.plus(course.center.logo?.substring(1))
             Glide.with(view).load(imgUrl).into(imageView)
+
             buttonCourses.setOnClickListener {
                 Log.i("msg*****", "click courses")
                 binding.CardCourse.visibility = GONE
@@ -106,7 +106,8 @@ class DetailCourseFragment : Fragment(), AdapterActiveProgram.ItemClickListener 
             location.text = course.location
             duration.text = course.duration.toString()
             price.text = course.price.toString() + " € "
-            val imgUrl = "https://apicaira.lunarxy.com" + course.image.substring(1)
+            //  val imgUrl = getString(R.string.baseImgURL) + course.image.substring(1)
+            val imgUrl = BASE_IMG_URL.plus(course.image.substring(1))
             Glide.with(view).load(imgUrl).into(imageViewDetail);
 //            close.setOnClickListener {
 //                Log.i("msg*****", "  close.setOnClickListener")
@@ -154,9 +155,9 @@ class DetailCourseFragment : Fragment(), AdapterActiveProgram.ItemClickListener 
 
         //    val fragmentManager: FragmentManager? = fragmentManager
         val fragmentManager: FragmentManager? = parentFragmentManager
-            fragmentManager?.beginTransaction()
-                ?.replace(R.id.fragmentDashboard, detailCourseFragment)
-                ?.addToBackStack(null)?.commit()
+        fragmentManager?.beginTransaction()
+            ?.replace(R.id.fragmentDashboard, detailCourseFragment)
+            ?.addToBackStack(null)?.commit()
     }
 }
 

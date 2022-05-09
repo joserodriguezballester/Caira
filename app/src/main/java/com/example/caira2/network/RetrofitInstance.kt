@@ -7,14 +7,12 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 
-const val BASE_URL = "https://apicaira.lunarxy.com/"
+const val BASE_URL = "https://apicaira.lunarxy.com/api/"
+const val BASE_IMG_URL = "https://apicaira.lunarxy.com"
 
-class client : OkHttpClient() {
-
-}
 
 object RetrofitInstance {
-    val BASE_URL = "https://apicaira.lunarxy.com/api/"
+ //   val BASE_URL = "https://apicaira.lunarxy.com/api/"
 
     /**
      * Inserta token de autorización
@@ -42,7 +40,6 @@ object RetrofitInstance {
     fun getRestApiServices(): RestApiService {
         return retrofit.create(RestApiService::class.java)
     }
-
 
     fun getApiServicesToken(token: String): RestApiService {
         return retrofit2(token).create(RestApiService::class.java)

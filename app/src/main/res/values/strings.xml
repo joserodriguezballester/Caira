@@ -46,6 +46,7 @@
     <string name="duration">Duration:</string>
     <string name="price">Price:</string>
     <string name="get_now">Get Now</string>
+    <string name="baseImgURL">https://apicaira.lunarxy.com</string>
 
 
 </resources>

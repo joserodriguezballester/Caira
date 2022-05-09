@@ -37,22 +37,22 @@ class SplashActivity : AppCompatActivity() {
 
   //      goTo()
 
-//        val content: View = findViewById(android.R.id.content)
-//        content.viewTreeObserver.addOnPreDrawListener(
-//            object : ViewTreeObserver.OnPreDrawListener {
-//                override fun onPreDraw(): Boolean {
-//                    // Check if the initial data is ready.
-//                    return if (isReady) {
-//                        // The content is ready; start drawing.
-//                        content.viewTreeObserver.removeOnPreDrawListener(this)
-//                        true
-//                    } else {
-//                        // The content is not ready; suspend.
-//                        false
-//                    }
-//                }
-//            }
-//        )
+        val content: View = findViewById(android.R.id.content)
+        content.viewTreeObserver.addOnPreDrawListener(
+            object : ViewTreeObserver.OnPreDrawListener {
+                override fun onPreDraw(): Boolean {
+                    // Check if the initial data is ready.
+                    return if (isReady) {
+                        // The content is ready; start drawing.
+                        content.viewTreeObserver.removeOnPreDrawListener(this)
+                        true
+                    } else {
+                        // The content is not ready; suspend.
+                        false
+                    }
+                }
+            }
+        )
 
         viewModel.loginResponse.observe(this) { value ->
             if (value) {
@@ -64,14 +64,11 @@ class SplashActivity : AppCompatActivity() {
                 mintent = Intent(this, WelcomeActivity::class.java)
 
             }
-            // splashScreen.setKeepOnScreenCondition { true }
+             splashScreen.setKeepOnScreenCondition { true }
             startActivity(mintent)
             isReady = true
         }
-
-
         //  finish()
-
     }
     private fun isInternetAvailable(context: Context): Boolean {
         var result = false
@@ -86,9 +83,7 @@ class SplashActivity : AppCompatActivity() {
                 else -> false
             }
         Log.i("msg*****", " internet::$result ")
-       
         return result
-
     }
 
     private fun goTo() {

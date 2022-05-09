@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.caira2.R
 import com.example.caira2.model.Course
+import com.example.caira2.network.BASE_IMG_URL
 
 
 class AdapterActiveProgram : RecyclerView.Adapter<AdapterActiveProgram.ActiveProgramViewHolder>() {
@@ -22,11 +23,13 @@ class AdapterActiveProgram : RecyclerView.Adapter<AdapterActiveProgram.ActivePro
     fun AdapterActiveProgram(lista: MutableList<Course>, contexto: Context) {
         this.courses = lista
         this.contex = contexto
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ActiveProgramViewHolder {
         var view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_active_program_list, parent, false)
+
         return ActiveProgramViewHolder(view)
     }
 
@@ -53,12 +56,15 @@ class AdapterActiveProgram : RecyclerView.Adapter<AdapterActiveProgram.ActivePro
         private val nombre = view.findViewById(R.id.idNombre) as TextView
         private val tipo = view.findViewById(R.id.idTipo) as TextView
         private val lugar = view.findViewById(R.id.idLocation) as TextView
+
         //  private val mrating = view.findViewById(R.id.ratingBar) as RatingBar
         private val precio = view.findViewById(R.id.idPrecio) as TextView
         private val imagen = view.findViewById(R.id.idImagen) as ImageView
 
-        // Relleno de los datos de la interface con cada curso
+
+        // Relleno de los datos de la vista con cada curso
         fun bind(course: Course, context: Context) {
+            val baseImg: String = context.getString(R.string.baseImgURL)
             //  if (card.layoutParams!=null) card.layoutParams.width=400
             siglas.text = course.center.acronym
             nombre.text = course.name
@@ -66,28 +72,25 @@ class AdapterActiveProgram : RecyclerView.Adapter<AdapterActiveProgram.ActivePro
             lugar.text = course.modality
             //        mrating.rating= 4.5F
             precio.text = course.price.toString()
-            val imgUrl="https://apicaira.lunarxy.com"+course.image.substring(1)
+            val imgUrl = BASE_IMG_URL.plus(course.image.substring(1))
             Glide.with(context).load(imgUrl).into(imagen);
             itemView.setOnClickListener(View.OnClickListener {
 
                 val position: Int = adapterPosition
                 if (position != RecyclerView.NO_POSITION) {
-                    clickListener.onClick(
-                        it,
-                        position
-                    ) // el método onclick de la interfase, en todo el row (itemView)
+                    clickListener.onClick(it, position)
+                    // el método onclick de la interfase, en todo el row (itemView)
                 }
 
             })
         }
 
         override fun onClick(view: View?) {
-            clickListener.onClick(
-                view,
-                adapterPosition
-            ); // call the onClick in the OnItemClickListenerTODO("Not yet implemented")
+            // call the onClick in the OnItemClickListenerTODO("Not yet implemented")
+            clickListener.onClick(view, adapterPosition)
         }
     }
+
 
     interface ItemClickListener {
         fun onClick(view: View?, position: Int)
