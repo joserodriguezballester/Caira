@@ -13,15 +13,15 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.caira2.R
 import com.example.caira2.databinding.FragmentDashboardBinding
-import com.example.caira2.iu.adapter.AdapterActiveProgram
+import com.example.caira2.iu.adapter.AdapterCourse
 
 
-class DashboardFragment : Fragment(), AdapterActiveProgram.ItemClickListener {
+class DashboardFragment : Fragment(), AdapterCourse.ItemClickListener {
 
     private var _binding: FragmentDashboardBinding? = null
     private val binding get() = _binding!!
     private lateinit var viewModel: DashboardViewModel
-    private val adapter = AdapterActiveProgram()
+    private val adapter = AdapterCourse()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -46,11 +46,16 @@ class DashboardFragment : Fragment(), AdapterActiveProgram.ItemClickListener {
 
         viewModel.llenarDatos()
         viewModel.courses.observe(viewLifecycleOwner) { datos ->
-            adapter.AdapterActiveProgram(datos, requireContext())
+            if (datos.isEmpty()){
+                //todo pantalla cuando no conecta/sin datos
+                Toast.makeText(context,"No se puede contactar con el servidor",Toast.LENGTH_LONG).show()
+            }
+            adapter.AdapterCourse(datos, requireContext())
+
             binding.reciclerIdPrograms.also {
                 it.layoutManager = LinearLayoutManager(requireContext())
                 it.setHasFixedSize(true)
-                // adapter.AdapterActiveProgram(datos, requireContext())
+                // adapter.AdapterCourse(datos, requireContext())
                 it.adapter = adapter
             }
             adapter.setClickListener(this)

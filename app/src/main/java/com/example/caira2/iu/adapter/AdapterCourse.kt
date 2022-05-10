@@ -14,29 +14,28 @@ import com.example.caira2.model.Course
 import com.example.caira2.network.BASE_IMG_URL
 
 
-class AdapterActiveProgram : RecyclerView.Adapter<AdapterActiveProgram.ActiveProgramViewHolder>() {
+class AdapterCourse : RecyclerView.Adapter<AdapterCourse.CourseViewHolder>() {
 
     var courses: MutableList<Course> = ArrayList()
     lateinit var contex: Context
     private lateinit var clickListener: ItemClickListener
 
-    fun AdapterActiveProgram(lista: MutableList<Course>, contexto: Context) {
+    fun AdapterCourse(lista: MutableList<Course>, contexto: Context) {
         this.courses = lista
         this.contex = contexto
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ActiveProgramViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CourseViewHolder {
         var view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_active_program_list, parent, false)
+            .inflate(R.layout.item_course, parent, false)
 
-        return ActiveProgramViewHolder(view)
+        return CourseViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: ActiveProgramViewHolder, position: Int) {
-        val activeProgram = courses[position]
-
-        holder.bind(activeProgram, contex)
+    override fun onBindViewHolder(holder: CourseViewHolder, position: Int) {
+        val course = courses[position]
+        holder.bind(course, contex)
     }
 
     override fun getItemCount(): Int {
@@ -48,7 +47,7 @@ class AdapterActiveProgram : RecyclerView.Adapter<AdapterActiveProgram.ActivePro
         clickListener = itemClickListener
     }
 
-    inner class ActiveProgramViewHolder(view: View) : RecyclerView.ViewHolder(view),
+    inner class CourseViewHolder(view: View) : RecyclerView.ViewHolder(view),
         View.OnClickListener {
         //Datos de la interface de cada item
         private val card = view.findViewById(R.id.card) as CardView
@@ -64,8 +63,7 @@ class AdapterActiveProgram : RecyclerView.Adapter<AdapterActiveProgram.ActivePro
 
         // Relleno de los datos de la vista con cada curso
         fun bind(course: Course, context: Context) {
-            val baseImg: String = context.getString(R.string.baseImgURL)
-            //  if (card.layoutParams!=null) card.layoutParams.width=400
+
             siglas.text = course.center.acronym
             nombre.text = course.name
             tipo.text = course.category
@@ -81,7 +79,6 @@ class AdapterActiveProgram : RecyclerView.Adapter<AdapterActiveProgram.ActivePro
                     clickListener.onClick(it, position)
                     // el método onclick de la interfase, en todo el row (itemView)
                 }
-
             })
         }
 

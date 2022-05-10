@@ -12,8 +12,6 @@ import kotlinx.coroutines.launch
 
 class DashboardViewModel : ViewModel() {
 
-    val coursesList= mutableListOf<Course>()
-
     private val _courses = MutableLiveData<MutableList<Course>>()
     val courses: LiveData<MutableList<Course>> = _courses
 

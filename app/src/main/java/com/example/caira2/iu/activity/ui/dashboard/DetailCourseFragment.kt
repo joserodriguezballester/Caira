@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.caira2.R
 import com.example.caira2.databinding.FragmentDetailCourseBinding
-import com.example.caira2.iu.adapter.AdapterActiveProgram
+import com.example.caira2.iu.adapter.AdapterCourse
 import com.example.caira2.model.Course
 import com.example.caira2.network.BASE_IMG_URL
 
@@ -30,7 +30,7 @@ private var valor = true
  * Use the [DetailCourseFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class DetailCourseFragment : Fragment(), AdapterActiveProgram.ItemClickListener {
+class DetailCourseFragment : Fragment(), AdapterCourse.ItemClickListener {
     private var position: Int? = null
     private lateinit var course: Course
 
@@ -38,7 +38,7 @@ class DetailCourseFragment : Fragment(), AdapterActiveProgram.ItemClickListener 
     private var _binding: FragmentDetailCourseBinding? = null
     private val binding get() = _binding!!
     private lateinit var viewModel: DetailCourseViewModel
-    private val adapter = AdapterActiveProgram()
+    private val adapter = AdapterCourse()
 
     companion object {
         @JvmStatic
@@ -127,11 +127,11 @@ class DetailCourseFragment : Fragment(), AdapterActiveProgram.ItemClickListener 
         Log.i("msg*****", "  course.center_id${course.center.id}")
         viewModel.llenarDatos(course.center.id)
         viewModel.courses.observe(viewLifecycleOwner) { datos ->
-            adapter.AdapterActiveProgram(datos, requireContext())
+            adapter.AdapterCourse(datos, requireContext())
             binding.rvCourses.also {
                 it.layoutManager = LinearLayoutManager(requireContext())
                 it.setHasFixedSize(true)
-                // adapter.AdapterActiveProgram(datos, requireContext())
+                // adapter.AdapterCourse(datos, requireContext())
                 it.adapter = adapter
             }
             adapter.setClickListener(this)

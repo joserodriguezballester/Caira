@@ -55,6 +55,7 @@
 
                     <TextView
                         android:id="@+id/name"
+                        style="@style/Theme.Caira2.H1.Purple"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_gravity="center_horizontal"
@@ -73,14 +74,17 @@
 
                     <TextView
                         android:id="@+id/description"
+                        style="@style/Theme.Caira2.TextPurple"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:layout_margin="10dp"
-                        tools:text="TextView" />
+                        tools:text="Descripcion" />
 
-                    <Button
+                    <TextView
                         android:id="@+id/getNow"
+                        style="@style/Theme.Caira2.TextEnlace"
+
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
@@ -98,6 +102,8 @@
 
                         <TextView
                             android:id="@+id/tvCourse"
+                            style="@style/Theme.Caira2.H2Purple"
+
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="10dp"
@@ -118,11 +124,15 @@
                                 android:layout_height="match_parent">
 
                                 <TextView
+                                    style="@style/Theme.Caira2.TextPurple"
+
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="@string/type" />
 
                                 <TextView
+                                    style="@style/Theme.Caira2.TextPurple"
+
                                     android:id="@+id/type"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
@@ -134,11 +144,15 @@
                                 android:layout_height="match_parent">
 
                                 <TextView
+                                    style="@style/Theme.Caira2.TextPurple"
+
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="@string/location" />
 
                                 <TextView
+                                    style="@style/Theme.Caira2.TextPurple"
+
                                     android:id="@+id/location"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
@@ -150,11 +164,15 @@
                                 android:layout_height="match_parent">
 
                                 <TextView
+                                    style="@style/Theme.Caira2.TextPurple"
+
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="@string/duration" />
 
                                 <TextView
+                                    style="@style/Theme.Caira2.TextPurple"
+
                                     android:id="@+id/duration"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
@@ -166,12 +184,16 @@
                                 android:layout_height="match_parent">
 
                                 <TextView
+                                    style="@style/Theme.Caira2.TextPurple"
+
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="@string/price" />
 
                                 <TextView
                                     android:id="@+id/price"
+                                    style="@style/Theme.Caira2.TextPurple"
+
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     tools:text="TextView" />

@@ -12,16 +12,6 @@ object WelcomeList {
             R.string.nulo
         ),
         WelcomeFrame(
-            R.drawable.wel_estudiantes,
-            R.string.estudiantes_fragment_titulo,
-            R.string.estudiantes_fragment
-        ),
-        WelcomeFrame(
-            R.drawable.wel_picscaira,
-            R.string.estudiantes_fragment_subtitulo,
-            R.string.futuro_fragment
-        ),
-        WelcomeFrame(
             R.drawable.captura1,
             R.string.nulo,
             R.string.nulo
@@ -34,6 +24,17 @@ object WelcomeList {
             R.drawable.captura3,
             R.string.nulo,
             R.string.nulo
+        ),
+
+        WelcomeFrame(
+            R.drawable.wel_estudiantes,
+            R.string.estudiantes_fragment_titulo,
+            R.string.estudiantes_fragment
+        ),
+        WelcomeFrame(
+            R.drawable.wel_picscaira,
+            R.string.estudiantes_fragment_subtitulo,
+            R.string.futuro_fragment
         ),
         )
 }
