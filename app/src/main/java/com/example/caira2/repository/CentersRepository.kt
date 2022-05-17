@@ -3,7 +3,7 @@ package com.example.caira2.repository
 import android.util.Log
 import com.example.caira2.CairaAplication.Companion.prefs
 import com.example.caira2.model.Center
-import com.example.caira2.network.RetrofitInstance
+import com.example.caira2.network.ApiService
 import com.example.caira2.network.modelResponse.CenterResponse
 
 object CentersRepository {
@@ -16,9 +16,9 @@ object CentersRepository {
     suspend fun all_centers(): MutableList<Center> {
         Log.i("msg*****", "suspend fun all_centers ")
         return try {
-            //       response = RetrofitInstance.getRestApiServices().all_centers2()
+            //       response = ApiService.getRestApiServices().all_centers2()
             val token =prefs.getToken()
-            response = RetrofitInstance.getApiServicesToken(token).all_centers()
+            response = ApiService.getApiServicesToken(token).all_centers()
 
             ////////MAPEAR
             Log.i("msg*****", "Response service ${response.toString()}")

@@ -58,8 +58,10 @@ class CentersFragment : Fragment(), RecyclerViewCentersClickListener {
         when (view.id)  {
             R.id.buttonFeed ->{
                 Log.i("msg*****", "click item  R.id.buttonFeed")
+
             }
             R.id.buttonInfo ->{
+
                 Log.i("msg*****", "click item  R.id.buttonInfo")
             }
             R.id.buttonCourses ->{

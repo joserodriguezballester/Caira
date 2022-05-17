@@ -2,7 +2,6 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-
     <data>
         <import type="android.view.View" />
         <variable
@@ -34,11 +33,14 @@
                     android:id="@+id/imageView"
                     android:layout_width="120dp"
                     android:layout_height="120dp"
-                    android:layout_margin="10dp" />
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp" />
 
                 <TextView
                     android:id="@+id/acro"
-                    style="@style/Theme.Caira2.H1.Pink"
+                    style="@style/Theme.Caira2.H1.Purple"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
@@ -64,20 +66,22 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/acro"
-                    android:layout_marginEnd="10dp"
+                    android:layout_margin="10dp"
                     android:layout_marginBottom="15dp"
                     android:layout_toRightOf="@id/imageView"
                     android:text="@{centre.type_center}"
                     tools:text="Tipo centro" />
 
                 <TextView
+                    android:id="@+id/location"
                     style="@style/Theme.Caira2.TextPurple"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/acro"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginEnd="10dp"
+                    android:layout_below="@+id/type"
+                    android:layout_toRightOf="@id/imageView"
+                    android:layout_margin="10dp"
                     android:layout_marginBottom="15dp"
+                    android:layout_toEndOf="@+id/imageView"
                     android:text="@{centre.location}"
                     tools:text="kkkkkk" />
 
@@ -85,7 +89,7 @@
                     style="@style/Theme.Caira2.TextPurple"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/type"
+                    android:layout_below="@id/location"
                     android:layout_marginRight="10dp"
                     android:layout_marginBottom="15dp"
                     android:layout_toRightOf="@id/imageView"

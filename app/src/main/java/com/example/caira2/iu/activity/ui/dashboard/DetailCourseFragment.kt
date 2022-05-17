@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -84,15 +85,32 @@ class DetailCourseFragment : Fragment(), AdapterCourse.ItemClickListener {
 
             buttonCourses.setOnClickListener {
                 Log.i("msg*****", "click courses")
+                binding.CardInfo?.visibility = GONE
                 binding.CardCourse.visibility = GONE
+                binding.rvCourses.visibility = VISIBLE
                 //    listener.onRecyclerViewItemClick(holder.itemView,centers[position])
             }
             buttonInfo.setOnClickListener {
                 Log.i("msg*****", "click buttonInfo")
+                binding.CardCourse.visibility = GONE
+                binding.rvCourses.visibility = GONE
+                binding.infoDescription?.text =
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque viverra dolor fringilla orci aliquam blandit. In nec varius leo, ut faucibus nibh. Donec tincidunt, justo non cursus molestie, elit enim elementum eros, quis aliquam magna dui non libero. Nulla facilisi. Ut vel lacus in ligula commodo efficitur. Donec sit amet nunc velit. Mauris vel lectus ut metus ultricies posuere eu non turpis. Praesent placerat quam a sodales hendrerit. Proin sodales dolor sed nibh interdum aliquet sit amet a ligula. Aliquam nisi sapien, laoreet sed commodo et, tempus ut enim. Morbi sit amet imperdiet urna.\n" +
+                            "\n" +
+                            "Cras lorem nisi, porttitor et eros in, imperdiet sodales sem. Praesent ornare tincidunt est, scelerisque consequat eros hendrerit at. Sed interdum finibus sapien at blandit. Praesent lobortis leo ac magna viverra lacinia. Curabitur varius posuere quam id bibendum. Nunc ultrices turpis vel laoreet rhoncus. Fusce egestas molestie sapien, et fringilla urna maximus at. Fusce commodo varius mauris. Fusce mattis condimentum ante vitae bibendum. Maecenas imperdiet felis nisi, sed ultricies tellus mollis id. Nam fermentum mauris dolor, tincidunt convallis sapien sodales in. Quisque tristique varius felis, vitae hendrerit magna faucibus quis. Donec ut urna sed dolor congue mollis. Nam eget urna porttitor, pharetra augue eget, imperdiet orci. Duis eget nisi felis.\n" +
+                            "\n" +
+                            "Nunc leo leo, scelerisque et volutpat at, rhoncus et purus. Curabitur consectetur ut risus a blandit. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed aliquam interdum tellus, eget porttitor lectus accumsan nec. Curabitur in viverra arcu. Duis placerat gravida augue non posuere. Donec odio mi, hendrerit at dolor vitae, scelerisque lobortis metus. Fusce laoreet diam ac nunc fermentum, ac eleifend eros fermentum. "
+                binding.CardInfo?.visibility = VISIBLE
                 //    listener.onRecyclerViewItemClick(holder.itemView,centers[position])
             }
             buttonFeed.setOnClickListener {
                 Log.i("msg*****", "click buttonFeed")
+                binding.CardCourse.visibility = GONE
+                binding.rvCourses.visibility = GONE
+                binding.infoTitulo?.text = "FEED"
+                binding.infoDescription?.text =
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque viverra dolor fringilla orci aliquam blandit. In nec varius leo, ut faucibus nibh. Donec tincidunt, justo non cursus molestie, elit enim elementum eros, quis aliquam magna dui non libero. Nulla facilisi. Ut vel lacus in ligula commodo efficitur. Donec sit amet nunc velit. Mauris vel lectus ut metus ultricies posuere eu non turpis. Praesent placerat quam a sodales hendrerit. Proin sodales dolor sed nibh interdum aliquet sit amet a ligula. Aliquam nisi sapien, laoreet sed commodo et, tempus ut enim. Morbi sit amet imperdiet urna.\n"
+                binding.CardInfo?.visibility = VISIBLE
                 //   listener.onRecyclerViewItemClick(holder.itemView,centers[position])
             }
 
@@ -107,7 +125,7 @@ class DetailCourseFragment : Fragment(), AdapterCourse.ItemClickListener {
             duration.text = course.duration.toString()
             price.text = course.price.toString() + " € "
             //  val imgUrl = getString(R.string.baseImgURL) + course.image.substring(1)
-            val imgUrl = BASE_IMG_URL.plus(course.image.substring(1))
+            val imgUrl = BASE_IMG_URL.plus(course.image?.substring(1))
             Glide.with(view).load(imgUrl).into(imageViewDetail);
 //            close.setOnClickListener {
 //                Log.i("msg*****", "  close.setOnClickListener")

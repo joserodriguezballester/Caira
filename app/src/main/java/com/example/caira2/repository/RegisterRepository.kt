@@ -2,7 +2,7 @@ package com.example.caira2.repository
 
 import android.util.Log
 import com.example.caira2.model.User
-import com.example.caira2.network.RetrofitInstance
+import com.example.caira2.network.ApiService
 import com.example.caira2.network.mappers.MapperImpl
 import com.example.caira2.network.modelResponse.ApiResponse
 import com.example.caira2.network.modelResponse.Detail400
@@ -24,7 +24,7 @@ object RegisterRepository {
         // val response:UserResponse
         Log.i("msg*****", "suspend fun add_user ")
         return try {
-            response = RetrofitInstance.getRestApiServices().add_user(user)
+            response = ApiService.getRestApiServices().add_user(user)
             Log.i("msg*****", "Response service ${response.toString()}")
             //Mapear resultado
             try {
@@ -42,7 +42,7 @@ object RegisterRepository {
         } catch (e: HttpException) {
             //handles exception with the request
             Log.i("msg*****", "HttpException ${e.toString()}")
-            val responseError = RetrofitInstance.getRestApiServices().add_user_error(user)
+            val responseError = ApiService.getRestApiServices().add_user_error(user)
             Log.i("msg*****", "Response valor error ${responseError.toString()}")
             errorCode = responseError.code()
             // Obtener el string de error devuelto por la API (ojo la API devuelve distintos JSON)

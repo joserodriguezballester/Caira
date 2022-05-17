@@ -70,7 +70,7 @@ class AdapterCourse : RecyclerView.Adapter<AdapterCourse.CourseViewHolder>() {
             lugar.text = course.modality
             //        mrating.rating= 4.5F
             precio.text = course.price.toString()
-            val imgUrl = BASE_IMG_URL.plus(course.image.substring(1))
+            val imgUrl = BASE_IMG_URL.plus(course.image?.substring(1))
             Glide.with(context).load(imgUrl).into(imagen);
             itemView.setOnClickListener(View.OnClickListener {
 

@@ -3,6 +3,7 @@ package com.example.caira2.network.mappers
 import com.example.caira2.model.Center
 import com.example.caira2.model.Course
 import com.example.caira2.model.User
+import com.example.caira2.network.BASE_IMG_URL
 import com.example.caira2.network.modelResponse.CenterResponse
 import com.example.caira2.network.modelResponse.CourseResponse
 import com.example.caira2.network.modelResponse.UserResponse
@@ -69,6 +70,10 @@ object MapperImpl : Mapper {
         )
     }
 
+
+    /**
+     * Pasar objeto CenterResponse (API_Model) a Center (App_Model)
+     */
     override fun toCenterModel(centerResponse: CenterResponse): Center {
         return Center(
             acronym = centerResponse.acronym,
@@ -81,7 +86,7 @@ object MapperImpl : Mapper {
             logo = centerResponse.logo,
             banner = centerResponse.banner,
             description = centerResponse.description,
-            imgUrl = "https://apicaira.lunarxy.com" + centerResponse.logo?.substring(1)
+            imgUrl = BASE_IMG_URL + centerResponse.logo?.substring(1)
         )
     }
 }

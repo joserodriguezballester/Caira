@@ -112,7 +112,6 @@ class BodyappActivity : AppCompatActivity() {
 
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-
         when (item.itemId) {
 
             (1) -> {

@@ -209,8 +209,58 @@
                 android:id="@+id/rv_courses"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/CardCourse" />
-</LinearLayout>
+                android:layout_below="@+id/CardCourse"
+                android:visibility="visible"/>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/CardInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/include_item_center"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="10dp"
+                android:visibility="visible">
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+
+
+
+                <TextView
+                    android:id="@+id/infoTitulo"
+                    style="@style/Theme.Caira2.H1.Purple"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal"
+                   android:text="Info:"
+                   />
+
+                <!--            <RatingBar-->
+                <!--                android:id="@+id/ratingBar"-->
+                <!--                android:layout_width="wrap_content"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                android:layout_gravity="center_horizontal"-->
+                <!--                android:contentDescription="rating"-->
+                <!--                android:numStars="5"-->
+                <!--                android:rating="3"-->
+                <!--                android:scaleX=".5"-->
+                <!--                android:scaleY=".5" />-->
+
+                <TextView
+                    android:id="@+id/infoDescription"
+                    style="@style/Theme.Caira2.TextPurple"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    tools:text="Descripcion" />
+            </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            </LinearLayout>
         </ScrollView>
 
     </RelativeLayout>

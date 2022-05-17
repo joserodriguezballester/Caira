@@ -35,8 +35,6 @@ class SplashActivity : AppCompatActivity() {
             Toast.makeText(this,"Conectate a Internet",Toast.LENGTH_LONG).show()
         }
 
-  //      goTo()
-
         val content: View = findViewById(android.R.id.content)
         content.viewTreeObserver.addOnPreDrawListener(
             object : ViewTreeObserver.OnPreDrawListener {

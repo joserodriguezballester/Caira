@@ -17,6 +17,6 @@ data class Course(
     val vacancies_available: Double?,
     val description: String,
     val location: String,
-    val image: String,
+    val image: String?,
     val center: Center
 ) : Serializable

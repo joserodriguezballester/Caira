@@ -29,7 +29,7 @@
 
 ## Al modificar Datos del Servidor
 
-### RetrofitInstance.kt
+### ApiService.kt
 - la ruta de las imagenes es BASE_IMG_URL
 - la ruta de la Api es BASE_URL
 

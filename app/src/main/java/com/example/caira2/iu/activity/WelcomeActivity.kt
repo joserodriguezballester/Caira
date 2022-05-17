@@ -72,6 +72,4 @@ class WelcomeActivity : AppCompatActivity() {
             dotsSlide[currentPage]!!.setTextColor(resources.getColor(R.color.secondary, null))
         }
     }
-
-
 }

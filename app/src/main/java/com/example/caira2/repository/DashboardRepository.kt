@@ -2,7 +2,7 @@ package com.example.caira2.repository
 
 import android.util.Log
 import com.example.caira2.model.Course
-import com.example.caira2.network.RetrofitInstance
+import com.example.caira2.network.ApiService
 import com.example.caira2.network.modelResponse.CourseResponse
 
 object DashboardRepository {
@@ -13,7 +13,7 @@ object DashboardRepository {
         Log.i("msg*****", "suspend fun all_courses ")
 
         return try {
-            response = RetrofitInstance.getRestApiServices().all_courses()
+            response = ApiService.getRestApiServices().all_courses()
             ////////MAPEAR
             Log.i("msg*****", "Response service ${response.toString()}")
             responseMapeada =
@@ -33,7 +33,7 @@ object DashboardRepository {
         Log.i("msg*****", "all_courses_one_center")
 
         return try {
-            response = RetrofitInstance.getRestApiServices().all_courses_one_center(center_id)
+            response = ApiService.getRestApiServices().all_courses_one_center(center_id)
             ////////MAPEAR
             Log.i("msg*****", "Response service ${response.toString()}")
             responseMapeada =
