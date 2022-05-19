@@ -18,8 +18,11 @@
         tools:layout="@layout/fragment_centers" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.caira2.iu.activity.ui.slideshow.SlideshowFragment"
+        android:id="@+id/nav_perfil"
+        android:name="com.example.caira2.iu.activity.ui.PerfilFragment"
         android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        tools:layout="@layout/fragment_perfil" />
+    <action
+        android:id="@+id/action_global_nav_slideshow"
+        app:destination="@id/nav_perfil" />
 </navigation>

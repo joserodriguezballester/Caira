@@ -32,6 +32,10 @@ class Prefs(val context: Context) {
 
     fun closeSesion() {
         storage.edit().clear().apply()
-        Log.i("msg*****","prefs(clear):$storage")
+        Log.i("msg*****", "prefs(clear):$storage")
     }
+
+    fun getMail(): String? = storage.getString(SHARED_UserMail, "")!!
+
+
 }

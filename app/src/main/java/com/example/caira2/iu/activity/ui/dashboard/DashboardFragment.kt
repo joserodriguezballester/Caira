@@ -45,10 +45,12 @@ class DashboardFragment : Fragment(), AdapterCourse.ItemClickListener {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.llenarDatos()
-        viewModel.courses.observe(viewLifecycleOwner) { datos ->
-            if (datos.isEmpty()){
+        //     viewModel.courses.observe(viewLifecycleOwner) { datos ->
+        viewModel.getCourses().observe(viewLifecycleOwner) { datos ->
+            if (datos.isEmpty()) {
                 //todo pantalla cuando no conecta/sin datos
-                Toast.makeText(context,"No se puede contactar con el servidor",Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "No se puede contactar con el servidor", Toast.LENGTH_LONG)
+                    .show()
             }
             adapter.AdapterCourse(datos, requireContext())
 
@@ -73,9 +75,9 @@ class DashboardFragment : Fragment(), AdapterCourse.ItemClickListener {
         val detailCourseFragment: DetailCourseFragment =
             DetailCourseFragment.newInstance(position, adapter.courses[position])
 
-        val fragmentManager: FragmentManager? = parentFragmentManager
-        fragmentManager?.beginTransaction()?.replace(R.id.fragmentDashboard, detailCourseFragment)
-            ?.commit()
+        val fragmentManager: FragmentManager = parentFragmentManager
+        fragmentManager.beginTransaction().replace(R.id.fragmentDashboard, detailCourseFragment)
+            .commit()
         //    fragmentManager?.beginTransaction()?.replace(R.id.fragmentDashboard, detailCourseFragment)
         //        ?.addToBackStack("atras")?.commit()
 

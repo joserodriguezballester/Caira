@@ -1,18 +1,19 @@
-package com.example.caira2.iu.activity.ui.slideshow
+package com.example.caira2.iu.activity.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.caira2.databinding.FragmentSlideshowBinding
+import com.example.caira2.databinding.FragmentPerfilBinding
+import com.example.caira2.viewModel.PerfilViewModel
 
 
-class SlideshowFragment : Fragment() {
+class PerfilFragment : Fragment() {
 
-    private var _binding: FragmentSlideshowBinding? = null
+    private var _binding: FragmentPerfilBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -23,15 +24,17 @@ class SlideshowFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        Log.i("msg*****", "perrrfffillllll")
         val slideshowViewModel =
-            ViewModelProvider(this).get(SlideshowViewModel::class.java)
+            ViewModelProvider(this).get(PerfilViewModel::class.java)
 
-        _binding = FragmentSlideshowBinding.inflate(inflater, container, false)
+        _binding = FragmentPerfilBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textSlideshow
-        slideshowViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+        //    val textView: TextView = binding.texxx
+        slideshowViewModel.name.observe(viewLifecycleOwner) {
+            //      textView.text = it
+            binding.tVName.text = it
         }
         return root
     }

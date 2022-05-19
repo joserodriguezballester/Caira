@@ -10,12 +10,11 @@ import android.text.style.ImageSpan
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -25,14 +24,13 @@ import com.example.caira2.CairaAplication.Companion.prefs
 import com.example.caira2.R
 import com.example.caira2.databinding.ActivityBodyappBinding
 import com.google.android.material.navigation.NavigationView
-import com.google.android.material.snackbar.Snackbar
-
 
 
 class BodyappActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityBodyappBinding
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,11 +47,11 @@ class BodyappActivity : AppCompatActivity() {
 
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
-        val navController = findNavController(R.id.nav_host_fragment_content_bodyapp)
+        navController = findNavController(R.id.nav_host_fragment_content_bodyapp)
 
        //Cambiar color
         //Para cambiar el color del fondo, texto y icono del item de un menu.
-        navView.setBackgroundColor(ContextCompat.getColor(this,R.color.sidenavdark));
+        navView.setBackgroundColor(ContextCompat.getColor(this, R.color.sidenavdark))
         navView.itemTextColor =
             ColorStateList.valueOf(ContextCompat.getColor(this,R.color.white))
         navView.itemIconTintList =
@@ -63,7 +61,7 @@ class BodyappActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_dashboard, R.id.nav_centres, R.id.nav_slideshow
+                R.id.nav_dashboard, R.id.nav_centres, R.id.nav_perfil
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -86,7 +84,7 @@ class BodyappActivity : AppCompatActivity() {
                 ContextCompat.getDrawable(this,R.drawable.ic_menu_settings)!!,
                 resources.getString(R.string.account_settings)
             )
-        );
+        )
         menu.add(
             0,
             2,
@@ -95,7 +93,7 @@ class BodyappActivity : AppCompatActivity() {
                 ContextCompat.getDrawable(this,R.drawable.ic_menu_social)!!,
                 resources.getString(R.string.social_profile)
             )
-        );
+        )
         menu.add(
             0,
             3,
@@ -104,25 +102,25 @@ class BodyappActivity : AppCompatActivity() {
                 ContextCompat.getDrawable(this, R.drawable.ic_menu_logout)!!,
                 resources.getString(R.string.logout)
             )
-        );
+        )
         menuInflater.inflate(R.menu.bodyapp, menu)
         return true
     }
-
-
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
 
             (1) -> {
-                val intent = Intent(this, WelcomeActivity::class.java)
+                Log.i("msg*****", "option 1 ")
+                val intent = Intent(this, BodyappActivity::class.java)
                 startActivity(intent)
                 return true
             }
             2 -> {
-
-                val intent = Intent(this, WelcomeActivity::class.java)
-                startActivity(intent)
+                Log.e("msg*****", "option 2 ")
+                navController.navigate(R.id.action_global_nav_slideshow)
+                //  val intent = Intent(this, WelcomeActivity::class.java)
+                //  startActivity(intent)
                 return true
             }
             3 -> {
@@ -149,7 +147,7 @@ class BodyappActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
-    private fun menuIconWithText(r: Drawable, title: String): CharSequence? {
+    private fun menuIconWithText(r: Drawable, title: String): CharSequence {
         r.setBounds(0, 0, r.intrinsicWidth, r.intrinsicHeight)
         val sb = SpannableString("    $title")
         val imageSpan = ImageSpan(r, ImageSpan.ALIGN_BOTTOM)

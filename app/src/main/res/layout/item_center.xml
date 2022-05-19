@@ -38,17 +38,17 @@
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="10dp" />
 
+
                 <TextView
                     android:id="@+id/acro"
                     style="@style/Theme.Caira2.H1.Purple"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
+
                     android:layout_marginBottom="15dp"
                     android:layout_toRightOf="@id/imageView"
                     android:text="@{centre.acronym}"
-                    tools:text="UPV" />
-
+                    tools:text="C.E.U." />
 
                 <TextView
                     style="@style/Theme.Caira2.H1.Purple"
@@ -58,7 +58,7 @@
                     android:layout_marginBottom="15dp"
                     android:layout_toRightOf="@id/acro"
                     android:text="@{centre.name}"
-                    tools:text="CENTRO" />
+                    tools:text="Universities" />
 
                 <TextView
                     android:id="@+id/type"
@@ -66,11 +66,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/acro"
-                    android:layout_margin="10dp"
-                    android:layout_marginBottom="15dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
                     android:layout_toRightOf="@id/imageView"
                     android:text="@{centre.type_center}"
-                    tools:text="Tipo centro" />
+                    tools:text="Valencia" />
 
                 <TextView
                     android:id="@+id/location"
@@ -78,12 +80,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/type"
-                    android:layout_toRightOf="@id/imageView"
-                    android:layout_margin="10dp"
-                    android:layout_marginBottom="15dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
                     android:layout_toEndOf="@+id/imageView"
+                    android:layout_toRightOf="@id/imageView"
                     android:text="@{centre.location}"
-                    tools:text="kkkkkk" />
+                    tools:text="" />
 
                 <TextView
                     style="@style/Theme.Caira2.TextPurple"
@@ -94,7 +98,7 @@
                     android:layout_marginBottom="15dp"
                     android:layout_toRightOf="@id/imageView"
                     android:text="@{centre.website}"
-                    tools:text="kkkkkk" />
+                    tools:text="https://www.ceuuniversities.com" />
 
                 <TextView
                     android:id="@+id/buttonInfo"
